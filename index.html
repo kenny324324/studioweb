@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenny Studio</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --spacing-unit: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            /* Monospace font stack for that technical/developer aesthetic */
+            font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            padding-top: 5rem;
+            padding-bottom: 4rem;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h1 {
+            font-size: 1.75rem; /* Slightly smaller for mono to keep it clean */
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            max-width: 640px;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-tertiary);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 600px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            background-color: #f4f4f4;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .contact-link:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        footer {
+            padding: 4rem 0 3rem;
+            border-top: 1px dashed #e0e0e0;
+            margin-top: auto;
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            body {
+                padding: 0 1.25rem;
+            }
+            
+            header {
+                padding-top: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">Kenny Studio</div>
+        </header>
+
+        <main>
+            <section>
+                <h1>Crafting intuitive mobile experiences<br>for the modern world.</h1>
+                <p>We are an independent creative studio focused on building high-quality Android applications. Our goal is to solve real problems with clean code and thoughtful design.</p>
+            </section>
+
+            <section>
+                <h2>01 / About</h2>
+                <p>Kenny Studio is dedicated to mobile innovation. We publish applications that prioritize performance, privacy, and user simplicity. We strictly adhere to Google Play Developer policies to ensure a safe and reliable environment for all our users.</p>
+            </section>
+
+            <section>
+                <h2>02 / Contact</h2>
+                <p>For inquiries, support, or partnership opportunities, please email us directly.</p>
+                <a href="mailto:kenny4work324@gmail.com" class="contact-link">kenny4work324@gmail.com</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Kenny Studio. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
