@@ -103,329 +103,377 @@
 
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-primary: #000000;
-            --text-secondary: #555555;
-            --text-tertiary: #888888;
-            --accent: #2563eb;
-            --spacing-unit: 2rem;
+            --bg: #fafafa;
+            --bg-white: #ffffff;
+            --text: #1a1a1a;
+            --text-sub: #555;
+            --text-muted: #999;
+            --border: #e8e8e8;
+            --accent: #4a7aff;
+            --radius: 12px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background-color: var(--bg-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 0 var(--spacing-unit);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            width: 100%;
-        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
 
-        header {
-            padding-top: 3rem;
-            padding-bottom: 1rem;
-        }
-
+        /* Nav */
         nav {
+            padding: 1.25rem 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             display: flex;
             align-items: center;
-            gap: 1rem;
-            font-size: 0.85rem;
+            gap: 0.5rem;
         }
+        nav a { color: var(--text-muted); text-decoration: none; }
+        nav a:hover { color: var(--text); }
 
-        nav a {
-            color: var(--text-tertiary);
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-        }
-
-        nav span {
-            color: var(--text-tertiary);
-        }
-
-        main {
-            flex: 1;
-        }
-
+        /* Hero */
         .hero {
-            padding: 3rem 0 4rem;
+            padding: 4rem 0 3rem;
+            text-align: center;
         }
-
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 1.4;
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
             margin-bottom: 1.5rem;
-            max-width: 640px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            max-width: 560px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        .cta {
+            display: inline-block;
+            background: var(--text);
+            color: #fff;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
 
-        .hero p {
-            font-size: 1rem;
-            color: var(--text-secondary);
+        /* Screenshot showcase */
+        .screenshots {
+            padding: 2rem 0 4rem;
+            overflow: hidden;
+        }
+        .screenshots-scroll {
+            display: flex;
+            gap: 1.25rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 1rem 0;
+            scrollbar-width: none;
+        }
+        .screenshots-scroll::-webkit-scrollbar { display: none; }
+        .screenshots-scroll img {
+            flex-shrink: 0;
+            width: 220px;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            scroll-snap-align: center;
+        }
+
+        /* Section */
+        section { padding: 3rem 0; }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        section > p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.7;
             max-width: 600px;
             margin-bottom: 2rem;
         }
 
-        .cta {
-            display: inline-block;
-            background: var(--text-primary);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: opacity 0.2s;
-        }
-
-        .cta:hover {
-            opacity: 0.8;
-        }
-
-        section {
-            margin-bottom: 4rem;
-        }
-
-        h2 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-tertiary);
-            margin-bottom: 1.25rem;
-            font-weight: 600;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-        }
-
+        /* Feature grid */
         .features {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
-
-        .feature {
-            padding: 1.25rem;
-            border: 1px dashed #e0e0e0;
-            border-radius: 4px;
+        .feature-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
         }
-
-        .feature h3 {
-            font-size: 0.9rem;
+        .feature-card h3 {
+            font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
-
-        .feature p {
+        .feature-card p {
             font-size: 0.85rem;
-            margin-bottom: 0;
+            color: var(--text-sub);
+            line-height: 1.6;
         }
 
-        .scenarios ul {
+        /* Place types */
+        .place-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .place-tag {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        /* Scenarios */
+        .scenario-list {
             list-style: none;
-            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
-
-        .scenarios li {
-            padding: 0.5rem 0;
+        .scenario-list li {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
             font-size: 0.9rem;
-            color: var(--text-secondary);
-            border-bottom: 1px dashed #f0f0f0;
+            color: var(--text-sub);
+            line-height: 1.5;
         }
 
-        .scenarios li::before {
-            content: "— ";
-            color: var(--text-tertiary);
-        }
-
+        /* FAQ */
         details {
-            border-bottom: 1px dashed #e0e0e0;
-            padding: 1rem 0;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 0.75rem;
+            overflow: hidden;
         }
-
         summary {
-            cursor: pointer;
+            padding: 1rem 1.25rem;
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-primary);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
+        summary::after { content: "+"; color: var(--text-muted); font-size: 1.2rem; }
+        details[open] summary::after { content: "\2212"; }
+        summary::-webkit-details-marker { display: none; }
         details p {
-            margin-top: 0.75rem;
+            padding: 0 1.25rem 1rem;
             font-size: 0.85rem;
+            color: var(--text-sub);
+            line-height: 1.7;
         }
 
-        .download-section {
+        /* CTA bottom */
+        .cta-section {
             text-align: center;
-            padding: 3rem 0;
-            border: 1px dashed #e0e0e0;
-            border-radius: 4px;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+        .cta-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .cta-section p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
         }
 
-        .download-section h2 {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            text-transform: none;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
-        }
-
-        .download-section p {
-            margin: 0 auto 1.5rem;
-        }
-
+        /* Footer */
         footer {
-            padding: 4rem 0 3rem;
-            border-top: 1px dashed #e0e0e0;
-            margin-top: auto;
-            color: var(--text-tertiary);
+            padding: 3rem 0 2rem;
+            text-align: center;
+            color: var(--text-muted);
             font-size: 0.8rem;
         }
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--text); }
 
-        footer a {
-            color: var(--text-tertiary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: var(--text-primary);
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 0 1.25rem; }
-            h1 { font-size: 1.4rem; }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero p { font-size: 1rem; }
             .features { grid-template-columns: 1fr; }
+            .screenshots-scroll img { width: 180px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header>
-            <nav>
-                <a href="../">Kenny Studio</a>
-                <span>/</span>
-                <span>找廁所！</span>
-            </nav>
-        </header>
-
-        <main>
-            <section class="hero">
-                <h1>一秒找到附近<br>最乾淨的公共廁所</h1>
-                <p>出門在外找不到廁所？「找廁所！」App 利用 GPS 定位，幫你快速找到附近的公共廁所，還能查看廁所評等和設施資訊。全台灣公廁資料庫，旅遊、通勤、帶小孩出門都好用。</p>
-                <a href="https://apps.apple.com/app/id6752564383" class="cta">免費下載 iOS App</a>
-            </section>
-
-            <section>
-                <h2>功能亮點</h2>
-                <div class="features">
-                    <div class="feature">
-                        <h3>GPS 即時定位</h3>
-                        <p>自動偵測你的位置，在地圖上顯示附近所有公共廁所，快速導航前往。</p>
-                    </div>
-                    <div class="feature">
-                        <h3>廁所評等系統</h3>
-                        <p>每間廁所都有評等資訊（特優、優等、良好、普通），一眼看出乾淨程度。</p>
-                    </div>
-                    <div class="feature">
-                        <h3>無障礙 &amp; 親子友善</h3>
-                        <p>顯示無障礙廁所、尿布台、親子廁所等設施，方便有需求的使用者。</p>
-                    </div>
-                    <div class="feature">
-                        <h3>社群評價</h3>
-                        <p>使用者可以對廁所的清潔度、方便性、擁擠程度進行評價，幫助其他人做更好的選擇。</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>涵蓋場所類型</h2>
-                <p>全台灣公共廁所資料庫，包含以下場所類型的廁所：</p>
-                <div class="features">
-                    <div class="feature">
-                        <h3>商場百貨</h3>
-                        <p>百貨公司、購物中心、商場內的公共廁所。</p>
-                    </div>
-                    <div class="feature">
-                        <h3>交通運輸</h3>
-                        <p>捷運站、火車站、客運站、高鐵站的廁所。</p>
-                    </div>
-                    <div class="feature">
-                        <h3>觀光景點</h3>
-                        <p>公園、風景區、觀光景點的公共廁所。</p>
-                    </div>
-                    <div class="feature">
-                        <h3>政府機關</h3>
-                        <p>區公所、圖書館、文化中心等公共設施。</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="scenarios">
-                <h2>適合使用情境</h2>
-                <ul>
-                    <li>旅遊觀光時，快速找到附近有乾淨廁所的地方</li>
-                    <li>帶小孩出門，需要找有尿布台或親子廁所的設施</li>
-                    <li>行動不便者，需要找無障礙廁所</li>
-                    <li>在陌生城市通勤、出差，不知道哪裡有公廁</li>
-                    <li>外國旅客來台灣旅遊（支援英文、日文、韓文）</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>常見問題</h2>
-                <details>
-                    <summary>找廁所 App 是免費的嗎？</summary>
-                    <p>是的，找廁所 App 可以免費下載使用。基本的搜尋和定位功能完全免費，另有進階功能可透過 App 內購買解鎖。</p>
-                </details>
-                <details>
-                    <summary>App 裡的廁所資料從哪裡來？</summary>
-                    <p>廁所資料來自政府公開資料與使用者社群回報，涵蓋全台灣的公共廁所，包含商場、車站、觀光景點、政府機關等場所。</p>
-                </details>
-                <details>
-                    <summary>可以查看廁所有沒有無障礙設施嗎？</summary>
-                    <p>可以。App 會顯示每間廁所的無障礙設施、尿布台、親子廁所等資訊，方便行動不便者或帶小孩的家長使用。</p>
-                </details>
-                <details>
-                    <summary>支援哪些語言？</summary>
-                    <p>目前支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。</p>
-                </details>
-            </section>
-
-            <section class="download-section">
-                <h2>立即下載，出門不再找廁所煩惱</h2>
-                <p>免費下載，支援 iPhone 及 iPad。</p>
-                <a href="https://apps.apple.com/app/id6752564383" class="cta">前往 App Store 下載</a>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> <a href="../">Kenny Studio</a>. All rights reserved.</p>
-        </footer>
+        <nav>
+            <a href="../">Kenny Studio</a>
+            <span>/</span>
+            <span>找廁所！</span>
+        </nav>
     </div>
+
+    <div class="container">
+        <div class="hero">
+            <img src="../assets/findtoilet/icon.png" alt="找廁所 App Icon" class="hero-icon">
+            <h1>一秒找到附近<br>最乾淨的公共廁所</h1>
+            <p>出門在外找不到廁所？「找廁所！」App 利用 GPS 定位，幫你快速找到附近的公共廁所，還能查看廁所評等和設施資訊。全台灣公廁資料庫，旅遊、通勤、帶小孩出門都好用。</p>
+            <a href="https://apps.apple.com/app/id6752564383" class="cta">免費下載 iOS App</a>
+        </div>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="screenshots">
+        <div class="screenshots-scroll">
+            <div style="flex-shrink:0;width:max(1px,calc((100vw - 960px)/2 + 1.5rem))"></div>
+            <img src="../assets/findtoilet/sc1.jpg" alt="找廁所 App 地圖畫面 - GPS 定位附近公廁" loading="lazy">
+            <img src="../assets/findtoilet/sc2.jpg" alt="找廁所 App 廁所詳細資訊 - 樓層與廁所類型" loading="lazy">
+            <img src="../assets/findtoilet/sc3.jpg" alt="找廁所 App 導航功能 - 無障礙廁所資訊" loading="lazy">
+            <img src="../assets/findtoilet/sc4.jpg" alt="找廁所 App 社群評價 - 使用者真實評論" loading="lazy">
+            <div style="flex-shrink:0;width:max(1px,calc((100vw - 960px)/2 + 1.5rem))"></div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Features -->
+        <section>
+            <div class="section-label">功能亮點</div>
+            <h2>找廁所不再碰運氣</h2>
+            <p>不管是旅遊到陌生城市、帶小孩出門、或是在百貨公司迷路，打開 App 就能找到離你最近且最乾淨的廁所。</p>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>GPS 即時定位</h3>
+                    <p>自動偵測你的位置，在地圖上顯示附近所有公共廁所，一鍵導航前往。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>廁所評等系統</h3>
+                    <p>每間廁所都有評等資訊（特優、優等、良好、普通），一眼看出乾淨程度。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>無障礙 &amp; 親子友善</h3>
+                    <p>顯示無障礙廁所、尿布台、親子廁所等設施，方便有需求的使用者。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>社群評價</h3>
+                    <p>使用者可對清潔度、方便性、擁擠程度評價，幫助其他人做更好的選擇。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Place types -->
+        <section>
+            <div class="section-label">涵蓋場所</div>
+            <h2>全台灣公共廁所資料庫</h2>
+            <p>資料來自政府公開資料與使用者社群回報，持續更新中。</p>
+            <div class="place-tags">
+                <span class="place-tag">百貨公司</span>
+                <span class="place-tag">購物中心</span>
+                <span class="place-tag">捷運站</span>
+                <span class="place-tag">火車站</span>
+                <span class="place-tag">高鐵站</span>
+                <span class="place-tag">客運站</span>
+                <span class="place-tag">公園</span>
+                <span class="place-tag">風景區</span>
+                <span class="place-tag">觀光景點</span>
+                <span class="place-tag">政府機關</span>
+                <span class="place-tag">圖書館</span>
+                <span class="place-tag">文化中心</span>
+                <span class="place-tag">醫療院所</span>
+                <span class="place-tag">學校</span>
+                <span class="place-tag">宗教場所</span>
+            </div>
+        </section>
+
+        <!-- Scenarios -->
+        <section>
+            <div class="section-label">使用情境</div>
+            <h2>這些時候你會需要它</h2>
+            <ul class="scenario-list">
+                <li>旅遊觀光時，快速找到附近有乾淨廁所的地方</li>
+                <li>帶小孩出門，需要找有尿布台或親子廁所的設施</li>
+                <li>行動不便者，需要確認哪裡有無障礙廁所</li>
+                <li>在陌生城市通勤、出差，不知道附近哪裡有公廁</li>
+                <li>外國旅客來台灣旅遊（App 支援英文、日文、韓文）</li>
+            </ul>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+            <div class="section-label">常見問題</div>
+            <h2>FAQ</h2>
+            <details>
+                <summary>找廁所 App 是免費的嗎？</summary>
+                <p>是的，找廁所 App 可以免費下載使用。基本的搜尋和定位功能完全免費，另有進階功能可透過 App 內購買解鎖。</p>
+            </details>
+            <details>
+                <summary>App 裡的廁所資料從哪裡來？</summary>
+                <p>廁所資料來自政府公開資料與使用者社群回報，涵蓋全台灣的公共廁所，包含商場、車站、觀光景點、政府機關等場所。</p>
+            </details>
+            <details>
+                <summary>可以查看廁所有沒有無障礙設施嗎？</summary>
+                <p>可以。App 會顯示每間廁所的無障礙設施、尿布台、親子廁所等資訊，方便行動不便者或帶小孩的家長使用。</p>
+            </details>
+            <details>
+                <summary>支援哪些語言？</summary>
+                <p>目前支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。</p>
+            </details>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>出門不再為找廁所煩惱</h2>
+            <p>免費下載，支援 iPhone 及 iPad</p>
+            <a href="https://apps.apple.com/app/id6752564383" class="cta">前往 App Store 下載</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> <a href="../">Kenny Studio</a></p>
+    </footer>
 
 </body>
 </html>
