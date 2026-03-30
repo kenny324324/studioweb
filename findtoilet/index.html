@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找廁所！Find Toilet — 一秒找到附近最乾淨的公共廁所 App</title>
+    <meta name="description" content="找廁所 App 幫你快速定位附近的公共廁所，查看廁所評等、無障礙設施、親子友善設備。支援全台公廁資料，出門在外不再煩惱。免費下載 iOS App。">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/findtoilet/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="找廁所！Find Toilet — 快速找到附近公廁">
+    <meta property="og:description" content="GPS 定位附近公共廁所，查看評等與設施資訊。全台公廁資料庫，免費下載。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/findtoilet/">
+    <meta property="og:site_name" content="Kenny Studio">
+    <meta property="og:locale" content="zh_TW">
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "找廁所！Find Toilet",
+        "operatingSystem": "iOS",
+        "applicationCategory": "LifestyleApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TWD"
+        },
+        "downloadUrl": "https://apps.apple.com/app/id6752564383",
+        "author": {
+            "@type": "Organization",
+            "name": "Kenny Studio"
+        },
+        "description": "快速找到附近最乾淨的公共廁所，查看評等與無障礙設施資訊。"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "找廁所 App 是免費的嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "是的，找廁所 App 可以免費下載使用。基本的搜尋和定位功能完全免費，另有進階功能可透過 App 內購買解鎖。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "App 裡的廁所資料從哪裡來？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "廁所資料來自政府公開資料與使用者社群回報，涵蓋全台灣的公共廁所，包含商場、車站、觀光景點、政府機關等場所。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "可以查看廁所有沒有無障礙設施嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "可以。App 會顯示每間廁所的無障礙設施、尿布台、親子廁所等資訊，方便行動不便者或帶小孩的家長使用。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "支援哪些語言？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "目前支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Kenny Studio",
+                "item": "https://kenny324324.github.io/studioweb/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "找廁所！Find Toilet",
+                "item": "https://kenny324324.github.io/studioweb/findtoilet/"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --accent: #2563eb;
+            --spacing-unit: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            padding-top: 3rem;
+            padding-bottom: 1rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        nav a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        nav span {
+            color: var(--text-tertiary);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .hero {
+            padding: 3rem 0 4rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            max-width: 640px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
+            display: inline-block;
+            background: var(--text-primary);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .cta:hover {
+            opacity: 0.8;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-tertiary);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature {
+            padding: 1.25rem;
+            border: 1px dashed #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .feature h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        .scenarios ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scenarios li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-bottom: 1px dashed #f0f0f0;
+        }
+
+        .scenarios li::before {
+            content: "— ";
+            color: var(--text-tertiary);
+        }
+
+        details {
+            border-bottom: 1px dashed #e0e0e0;
+            padding: 1rem 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 3rem 0;
+            border: 1px dashed #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .download-section h2 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            text-transform: none;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .download-section p {
+            margin: 0 auto 1.5rem;
+        }
+
+        footer {
+            padding: 4rem 0 3rem;
+            border-top: 1px dashed #e0e0e0;
+            margin-top: auto;
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 0 1.25rem; }
+            h1 { font-size: 1.4rem; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <nav>
+                <a href="../">Kenny Studio</a>
+                <span>/</span>
+                <span>找廁所！</span>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>一秒找到附近<br>最乾淨的公共廁所</h1>
+                <p>出門在外找不到廁所？「找廁所！」App 利用 GPS 定位，幫你快速找到附近的公共廁所，還能查看廁所評等和設施資訊。全台灣公廁資料庫，旅遊、通勤、帶小孩出門都好用。</p>
+                <a href="https://apps.apple.com/app/id6752564383" class="cta">免費下載 iOS App</a>
+            </section>
+
+            <section>
+                <h2>功能亮點</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>GPS 即時定位</h3>
+                        <p>自動偵測你的位置，在地圖上顯示附近所有公共廁所，快速導航前往。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>廁所評等系統</h3>
+                        <p>每間廁所都有評等資訊（特優、優等、良好、普通），一眼看出乾淨程度。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>無障礙 &amp; 親子友善</h3>
+                        <p>顯示無障礙廁所、尿布台、親子廁所等設施，方便有需求的使用者。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>社群評價</h3>
+                        <p>使用者可以對廁所的清潔度、方便性、擁擠程度進行評價，幫助其他人做更好的選擇。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>涵蓋場所類型</h2>
+                <p>全台灣公共廁所資料庫，包含以下場所類型的廁所：</p>
+                <div class="features">
+                    <div class="feature">
+                        <h3>商場百貨</h3>
+                        <p>百貨公司、購物中心、商場內的公共廁所。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>交通運輸</h3>
+                        <p>捷運站、火車站、客運站、高鐵站的廁所。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>觀光景點</h3>
+                        <p>公園、風景區、觀光景點的公共廁所。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>政府機關</h3>
+                        <p>區公所、圖書館、文化中心等公共設施。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scenarios">
+                <h2>適合使用情境</h2>
+                <ul>
+                    <li>旅遊觀光時，快速找到附近有乾淨廁所的地方</li>
+                    <li>帶小孩出門，需要找有尿布台或親子廁所的設施</li>
+                    <li>行動不便者，需要找無障礙廁所</li>
+                    <li>在陌生城市通勤、出差，不知道哪裡有公廁</li>
+                    <li>外國旅客來台灣旅遊（支援英文、日文、韓文）</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>常見問題</h2>
+                <details>
+                    <summary>找廁所 App 是免費的嗎？</summary>
+                    <p>是的，找廁所 App 可以免費下載使用。基本的搜尋和定位功能完全免費，另有進階功能可透過 App 內購買解鎖。</p>
+                </details>
+                <details>
+                    <summary>App 裡的廁所資料從哪裡來？</summary>
+                    <p>廁所資料來自政府公開資料與使用者社群回報，涵蓋全台灣的公共廁所，包含商場、車站、觀光景點、政府機關等場所。</p>
+                </details>
+                <details>
+                    <summary>可以查看廁所有沒有無障礙設施嗎？</summary>
+                    <p>可以。App 會顯示每間廁所的無障礙設施、尿布台、親子廁所等資訊，方便行動不便者或帶小孩的家長使用。</p>
+                </details>
+                <details>
+                    <summary>支援哪些語言？</summary>
+                    <p>目前支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。</p>
+                </details>
+            </section>
+
+            <section class="download-section">
+                <h2>立即下載，出門不再找廁所煩惱</h2>
+                <p>免費下載，支援 iPhone 及 iPad。</p>
+                <a href="https://apps.apple.com/app/id6752564383" class="cta">前往 App Store 下載</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> <a href="../">Kenny Studio</a>. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

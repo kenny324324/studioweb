@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取貨吧 PackageTraker — 21 家物流包裹追蹤 App｜超商取貨、國際快遞一次搞定</title>
+    <meta name="description" content="取貨吧 App 整合 21 家物流，7-11、全家、黑貓、中華郵政、DHL、FedEx 包裹一個 App 全追蹤。AI 截圖掃描、推播到貨通知、桌面小工具，免費下載 iOS App。">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/packagetracker/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="取貨吧 — 21 家物流，一個 App 全搞定">
+    <meta property="og:description" content="整合超商取貨、宅配、國際快遞追蹤。AI 截圖掃描自動辨識單號，到貨推播提醒。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/packagetracker/">
+    <meta property="og:site_name" content="Kenny Studio">
+    <meta property="og:locale" content="zh_TW">
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "取貨吧 PackageTraker",
+        "operatingSystem": "iOS",
+        "applicationCategory": "UtilitiesApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "TWD"
+        },
+        "downloadUrl": "https://apps.apple.com/app/id6758759908",
+        "author": {
+            "@type": "Organization",
+            "name": "Kenny Studio"
+        },
+        "description": "整合 21 家物流的包裹追蹤 App，支援超商取貨、國內宅配、國際快遞。"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "取貨吧支援哪些物流商？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "支援 21 家物流商，包含超商（7-11、全家、萊爾富、OK、蝦皮店到店）、國內宅配（黑貓、新竹物流、宅配通、中華郵政）、電商物流（PChome、momo、Kerry、台灣宅配）、國際快遞（DHL、FedEx、UPS、順豐、燕文、菜鳥）等。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "取貨吧是免費的嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "免費版可追蹤最多 5 個包裹。訂閱 Pro 方案可解鎖無限包裹追蹤、AI 截圖掃描、進階主題等功能，月費 NT$60 或年費 NT$600。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "AI 截圖掃描是什麼？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "拍下或截圖你的訂單確認畫面，AI 會自動辨識物流單號和物流商，不需要手動輸入。此為 Pro 訂閱功能。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "會推播通知包裹到貨嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "會。App 會在包裹狀態更新時推播通知，也會在每天早上 10 點提醒你今天有哪些包裹可以取貨。"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Kenny Studio",
+                "item": "https://kenny324324.github.io/studioweb/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "取貨吧 PackageTraker",
+                "item": "https://kenny324324.github.io/studioweb/packagetracker/"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --accent: #2563eb;
+            --spacing-unit: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            padding-top: 3rem;
+            padding-bottom: 1rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        nav a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        nav span {
+            color: var(--text-tertiary);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .hero {
+            padding: 3rem 0 4rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            max-width: 640px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
+            display: inline-block;
+            background: var(--text-primary);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .cta:hover {
+            opacity: 0.8;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-tertiary);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature {
+            padding: 1.25rem;
+            border: 1px dashed #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .feature h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        .carriers {
+            margin-bottom: 4rem;
+        }
+
+        .carrier-group {
+            margin-bottom: 2rem;
+        }
+
+        .carrier-group h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .carrier-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .carrier-tag {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        details {
+            border-bottom: 1px dashed #e0e0e0;
+            padding: 1rem 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        details p {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 3rem 0;
+            border: 1px dashed #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .download-section h2 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            text-transform: none;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .download-section p {
+            margin: 0 auto 1.5rem;
+        }
+
+        footer {
+            padding: 4rem 0 3rem;
+            border-top: 1px dashed #e0e0e0;
+            margin-top: auto;
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 0 1.25rem; }
+            h1 { font-size: 1.4rem; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <nav>
+                <a href="../">Kenny Studio</a>
+                <span>/</span>
+                <span>取貨吧</span>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>21 家物流，<br>一個 App 全搞定</h1>
+                <p>不再需要開好幾個 App 查包裹。「取貨吧」整合 7-11、全家、黑貓、中華郵政、DHL、FedEx 等 21 家物流商，所有包裹狀態一目瞭然。AI 自動辨識截圖單號，到貨推播提醒，再也不會忘記取貨。</p>
+                <a href="https://apps.apple.com/app/id6758759908" class="cta">免費下載 iOS App</a>
+            </section>
+
+            <section>
+                <h2>功能亮點</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>AI 截圖掃描</h3>
+                        <p>截圖訂單確認畫面，AI 自動辨識物流單號和物流商，不用手動輸入。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>到貨推播通知</h3>
+                        <p>包裹狀態更新即時推播，每天早上 10 點提醒你今天可以取的包裹。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>桌面小工具</h3>
+                        <p>iOS 桌面 Widget 直接看包裹狀態，不用打開 App，15 分鐘自動更新。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>多裝置同步</h3>
+                        <p>透過 Apple 帳號登入，包裹資料即時同步到所有 iOS 裝置。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="carriers">
+                <h2>支援 21 家物流商</h2>
+
+                <div class="carrier-group">
+                    <h3>超商取貨</h3>
+                    <div class="carrier-tags">
+                        <span class="carrier-tag">7-11</span>
+                        <span class="carrier-tag">全家 FamilyMart</span>
+                        <span class="carrier-tag">萊爾富 HiLife</span>
+                        <span class="carrier-tag">OK Mart</span>
+                        <span class="carrier-tag">蝦皮店到店</span>
+                    </div>
+                </div>
+
+                <div class="carrier-group">
+                    <h3>國內宅配</h3>
+                    <div class="carrier-tags">
+                        <span class="carrier-tag">黑貓宅急便</span>
+                        <span class="carrier-tag">新竹物流</span>
+                        <span class="carrier-tag">宅配通 e-Can</span>
+                        <span class="carrier-tag">中華郵政</span>
+                    </div>
+                </div>
+
+                <div class="carrier-group">
+                    <h3>電商物流</h3>
+                    <div class="carrier-tags">
+                        <span class="carrier-tag">PChome</span>
+                        <span class="carrier-tag">momo</span>
+                        <span class="carrier-tag">Kerry 嘉里</span>
+                        <span class="carrier-tag">台灣宅配</span>
+                    </div>
+                </div>
+
+                <div class="carrier-group">
+                    <h3>國際快遞</h3>
+                    <div class="carrier-tags">
+                        <span class="carrier-tag">DHL</span>
+                        <span class="carrier-tag">FedEx</span>
+                        <span class="carrier-tag">UPS</span>
+                        <span class="carrier-tag">順豐速運</span>
+                        <span class="carrier-tag">燕文物流</span>
+                        <span class="carrier-tag">菜鳥物流</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>常見問題</h2>
+                <details>
+                    <summary>取貨吧支援哪些物流商？</summary>
+                    <p>支援 21 家物流商，包含超商（7-11、全家、萊爾富、OK、蝦皮店到店）、國內宅配（黑貓、新竹物流、宅配通、中華郵政）、電商物流（PChome、momo、Kerry、台灣宅配）、國際快遞（DHL、FedEx、UPS、順豐、燕文、菜鳥）等。</p>
+                </details>
+                <details>
+                    <summary>取貨吧是免費的嗎？</summary>
+                    <p>免費版可追蹤最多 5 個包裹。訂閱 Pro 方案可解鎖無限包裹追蹤、AI 截圖掃描、進階主題等功能，月費 NT$60 或年費 NT$600。</p>
+                </details>
+                <details>
+                    <summary>AI 截圖掃描是什麼？</summary>
+                    <p>拍下或截圖你的訂單確認畫面，AI 會自動辨識物流單號和物流商，不需要手動輸入。此為 Pro 訂閱功能。</p>
+                </details>
+                <details>
+                    <summary>會推播通知包裹到貨嗎？</summary>
+                    <p>會。App 會在包裹狀態更新時推播通知，也會在每天早上 10 點提醒你今天有哪些包裹可以取貨。</p>
+                </details>
+            </section>
+
+            <section class="download-section">
+                <h2>不再漏接任何包裹</h2>
+                <p>免費下載，支援 iPhone 及 iPad。</p>
+                <a href="https://apps.apple.com/app/id6758759908" class="cta">前往 App Store 下載</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> <a href="../">Kenny Studio</a>. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kenny324324.github.io/studioweb/sitemap.xml
