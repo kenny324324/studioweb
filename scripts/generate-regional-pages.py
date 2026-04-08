@@ -186,6 +186,8 @@ def generate_city_page(city, districts, city_slug):
     <!-- TODO: 將 ca-pub-9616816354780961 替換為你的 AdSense Publisher ID -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9616816354780961" crossorigin="anonymous"></script>
 
+    <link rel="icon" type="image/png" href="{BASE_URL}/assets/findtoilet/icon.png">
+
     <!-- Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=swap">
 
@@ -380,6 +382,8 @@ def generate_district_page(city, city_slug, district, toilets):
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9616816354780961" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" href="{BASE_URL}/assets/findtoilet/icon.png">
 
     <!-- Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=swap">
