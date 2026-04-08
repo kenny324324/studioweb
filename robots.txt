@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /assets/findtoilet/toilets.json
 
 Sitemap: https://kenny324324.github.io/studioweb/sitemap.xml

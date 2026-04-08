@@ -25,7 +25,17 @@
     <meta property="og:site_name" content="Kenny Studio">
     <meta property="og:locale" content="zh_TW">
     <meta property="og:image" content="https://kenny324324.github.io/studioweb/assets/findtoilet/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="附近公廁地圖 — 線上找廁所">
+    <meta name="twitter:description" content="GPS 定位附近公共廁所，全台灣 20,000+ 間公廁資料。免費線上查詢。">
+    <meta name="twitter:image" content="https://kenny324324.github.io/studioweb/assets/findtoilet/og-image.png">
+
     <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="zh-Hant" href="https://kenny324324.github.io/studioweb/findtoilet/map/">
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -52,6 +62,10 @@
         ]
     }
     </script>
+
+    <!-- Google AdSense -->
+    <!-- TODO: 將 ca-pub-9616816354780961 替換為你的 AdSense Publisher ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9616816354780961" crossorigin="anonymous"></script>
 
     <!-- Leaflet + MarkerCluster -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
@@ -610,8 +624,15 @@
                 </div>
             </div>
 
-            <!-- Ad slot placeholder -->
-            <div class="ad-slot" id="detailAdSlot"></div>
+            <!-- Ad slot: detail sheet -->
+            <div class="ad-slot" id="detailAdSlot">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9616816354780961"
+                     data-ad-slot="DETAIL_SLOT_ID"
+                     data-ad-format="rectangle"
+                     data-full-width-responsive="true"></ins>
+            </div>
         </div>
     </div>
 
@@ -667,9 +688,17 @@
         let searchDebounceTimer = null;
         let sortMode = 'distance'; // 'distance' or 'rating'
 
+        // ===== URL Parameters =====
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramLat = parseFloat(urlParams.get('lat'));
+        const paramLng = parseFloat(urlParams.get('lng'));
+        const paramZoom = parseInt(urlParams.get('zoom'));
+        const initCenter = (paramLat && paramLng) ? [paramLat, paramLng] : TAIWAN;
+        const initZoom = paramZoom || (paramLat ? 12 : ZOOM_DEFAULT);
+
         // ===== Map =====
         const map = L.map('map', {
-            center: TAIWAN, zoom: ZOOM_DEFAULT, zoomControl: false, attributionControl: true
+            center: initCenter, zoom: initZoom, zoomControl: false, attributionControl: true
         });
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OSM', maxZoom: 19
@@ -926,6 +955,13 @@
                     showDetail(d);
                 });
             });
+
+            // Initialize in-list ads
+            list.querySelectorAll('.ad-slot-list').forEach(el => {
+                if (el.querySelector('.adsbygoogle')) return;
+                el.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9616816354780961" data-ad-slot="LIST_SLOT_ID" data-ad-format="fluid" data-ad-layout-key="-6t+ed+2i-1n-4w"></ins>';
+                try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+            });
         }
 
         // ===== Detail sheet =====
@@ -993,6 +1029,9 @@
 
             setDetailState('medium');
             setSheetState('collapsed');
+
+            // Push detail ad
+            try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
         }
 
         document.getElementById('detailBack').addEventListener('click', () => {
