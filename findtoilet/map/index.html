@@ -1033,19 +1033,17 @@
         const sheetHandle = document.getElementById('sheetHandle');
         const sheetEl = document.getElementById('bottomSheet');
         const sheetScroll = document.getElementById('sheetScroll');
+        const filterBarEl = document.getElementById('filterBar');
 
-        // Handle drag
         sheetHandle.addEventListener('touchstart', function(e) {
             isDragging = true;
             startY = e.touches[0].clientY;
             startTranslate = currentSheetY;
             sheetEl.style.transition = 'none';
-            document.getElementById('filterBar').style.transition = 'none';
+            filterBarEl.style.transition = 'none';
         }, { passive: true });
 
-        // Scroll area drag (pull down when at top, pull up when not expanded)
-        let scrollDragStartY = 0;
-        let scrollDragReady = false;
+        let scrollDragStartY = 0, scrollDragReady = false;
 
         sheetScroll.addEventListener('touchstart', function(e) {
             scrollDragStartY = e.touches[0].clientY;
@@ -1054,37 +1052,21 @@
 
         sheetScroll.addEventListener('touchmove', function(e) {
             if (!scrollDragReady || isDragging) return;
-            const dy = e.touches[0].clientY - scrollDragStartY;
-
-            // Pull DOWN: only when scrolled to top
+            var dy = e.touches[0].clientY - scrollDragStartY;
             if (dy > 8 && sheetScroll.scrollTop <= 0) {
-                isDragging = true;
-                startY = e.touches[0].clientY;
-                startTranslate = currentSheetY;
-                sheetEl.style.transition = 'none';
-                document.getElementById('filterBar').style.transition = 'none';
-                scrollDragReady = false;
-                e.preventDefault();
-                return;
-            }
-
-            // Pull UP: when not fully expanded
-            if (dy < -8 && sheetState !== 'expanded') {
-                isDragging = true;
-                startY = e.touches[0].clientY;
-                startTranslate = currentSheetY;
-                sheetEl.style.transition = 'none';
-                document.getElementById('filterBar').style.transition = 'none';
-                scrollDragReady = false;
-                e.preventDefault();
-                return;
+                isDragging = true; startY = e.touches[0].clientY; startTranslate = currentSheetY;
+                sheetEl.style.transition = 'none'; filterBarEl.style.transition = 'none';
+                scrollDragReady = false; e.preventDefault();
+            } else if (dy < -8 && sheetState !== 'expanded') {
+                isDragging = true; startY = e.touches[0].clientY; startTranslate = currentSheetY;
+                sheetEl.style.transition = 'none'; filterBarEl.style.transition = 'none';
+                scrollDragReady = false; e.preventDefault();
             }
         }, { passive: false });
 
         document.addEventListener('touchmove', function(e) {
             if (!isDragging) return;
-            const dy = e.touches[0].clientY - startY;
-            const newY = Math.max(window.innerHeight - sheetHeights.expanded, startTranslate + dy);
+            var newY = Math.max(window.innerHeight - sheetHeights.expanded, startTranslate + (e.touches[0].clientY - startY));
             currentSheetY = newY;
             sheetEl.style.transform = 'translateY(' + newY + 'px)';
             syncFilterBar(newY);
@@ -1092,19 +1074,12 @@
 
         document.addEventListener('touchend', function() {
             if (!isDragging) return;
-            isDragging = false;
-            scrollDragReady = false;
-            sheetEl.style.transition = '';
-            document.getElementById('filterBar').style.transition = '';
-
-            const visibleH = window.innerHeight - currentSheetY;
-            if (visibleH > sheetHeights.medium + 80) {
-                setSheetState('expanded');
-            } else if (visibleH > sheetHeights.collapsed + 40) {
-                setSheetState('medium');
-            } else {
-                setSheetState('collapsed');
-            }
+            isDragging = false; scrollDragReady = false;
+            sheetEl.style.transition = ''; filterBarEl.style.transition = '';
+            var visibleH = window.innerHeight - currentSheetY;
+            if (visibleH > sheetHeights.medium + 80) setSheetState('expanded');
+            else if (visibleH > sheetHeights.collapsed + 40) setSheetState('medium');
+            else setSheetState('collapsed');
         });
 
         // Click handle to toggle
@@ -1150,70 +1125,45 @@
             document.getElementById('detailOverlay').classList.toggle('visible', state === 'expanded');
         }
 
-        // Init detail sheet as hidden
         setDetailState('hidden');
 
-        // Detail handle drag
         detailHandleArea.addEventListener('touchstart', function(e) {
-            detailDragging = true;
-            detailStartY = e.touches[0].clientY;
-            detailStartTranslate = currentDetailY;
-            detailEl.style.transition = 'none';
+            detailDragging = true; detailStartY = e.touches[0].clientY;
+            detailStartTranslate = currentDetailY; detailEl.style.transition = 'none';
         }, { passive: true });
 
-        // Detail scroll area drag
         detailScrollEl.addEventListener('touchstart', function(e) {
-            detailScrollDragStartY = e.touches[0].clientY;
-            detailScrollDragReady = true;
+            detailScrollDragStartY = e.touches[0].clientY; detailScrollDragReady = true;
         }, { passive: true });
 
         detailScrollEl.addEventListener('touchmove', function(e) {
             if (!detailScrollDragReady || detailDragging) return;
-            const dy = e.touches[0].clientY - detailScrollDragStartY;
-
+            var dy = e.touches[0].clientY - detailScrollDragStartY;
             if (dy > 8 && detailScrollEl.scrollTop <= 0) {
-                detailDragging = true;
-                detailStartY = e.touches[0].clientY;
-                detailStartTranslate = currentDetailY;
-                detailEl.style.transition = 'none';
-                detailScrollDragReady = false;
-                e.preventDefault();
-                return;
-            }
-            if (dy < -8 && detailState !== 'expanded') {
-                detailDragging = true;
-                detailStartY = e.touches[0].clientY;
-                detailStartTranslate = currentDetailY;
-                detailEl.style.transition = 'none';
-                detailScrollDragReady = false;
-                e.preventDefault();
-                return;
+                detailDragging = true; detailStartY = e.touches[0].clientY;
+                detailStartTranslate = currentDetailY; detailEl.style.transition = 'none';
+                detailScrollDragReady = false; e.preventDefault();
+            } else if (dy < -8 && detailState !== 'expanded') {
+                detailDragging = true; detailStartY = e.touches[0].clientY;
+                detailStartTranslate = currentDetailY; detailEl.style.transition = 'none';
+                detailScrollDragReady = false; e.preventDefault();
             }
         }, { passive: false });
 
         document.addEventListener('touchmove', function(e) {
             if (!detailDragging) return;
-            const dy = e.touches[0].clientY - detailStartY;
-            const newY = Math.max(window.innerHeight - detailHeights.expanded, detailStartTranslate + dy);
+            var newY = Math.max(window.innerHeight - detailHeights.expanded, detailStartTranslate + (e.touches[0].clientY - detailStartY));
             currentDetailY = newY;
             detailEl.style.transform = 'translateY(' + newY + 'px)';
         }, { passive: true });
 
         document.addEventListener('touchend', function() {
             if (!detailDragging) return;
-            detailDragging = false;
-            detailScrollDragReady = false;
-            detailEl.style.transition = '';
-
-            const visibleH = window.innerHeight - currentDetailY;
-            if (visibleH < 100) {
-                setDetailState('hidden');
-                setSheetState('medium');
-            } else if (visibleH > detailHeights.medium + 60) {
-                setDetailState('expanded');
-            } else {
-                setDetailState('medium');
-            }
+            detailDragging = false; detailScrollDragReady = false; detailEl.style.transition = '';
+            var visibleH = window.innerHeight - currentDetailY;
+            if (visibleH < 100) { setDetailState('hidden'); setSheetState('medium'); }
+            else if (visibleH > detailHeights.medium + 60) setDetailState('expanded');
+            else setDetailState('medium');
         });
 
         // Detail handle click toggle
