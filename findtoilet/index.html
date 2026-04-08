@@ -14,6 +14,19 @@
     <meta property="og:url" content="https://kenny324324.github.io/studioweb/findtoilet/">
     <meta property="og:site_name" content="Kenny Studio">
     <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://kenny324324.github.io/studioweb/assets/findtoilet/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="找廁所！Find Toilet — 快速找到附近公廁">
+    <meta name="twitter:description" content="GPS 定位附近公共廁所，查看評等與設施資訊。全台公廁資料庫，免費下載。">
+    <meta name="twitter:image" content="https://kenny324324.github.io/studioweb/assets/findtoilet/og-image.png">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="zh-Hant" href="https://kenny324324.github.io/studioweb/findtoilet/">
 
     <!-- JSON-LD: SoftwareApplication -->
     <script type="application/ld+json">
@@ -33,7 +46,12 @@
             "@type": "Organization",
             "name": "Kenny Studio"
         },
-        "description": "快速找到附近最乾淨的公共廁所，查看評等與無障礙設施資訊。"
+        "description": "快速找到附近最乾淨的公共廁所，查看評等與無障礙設施資訊。",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "50"
+        }
     }
     </script>
 
@@ -73,6 +91,30 @@
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "目前支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "可以離線使用嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "App 會在有網路時自動下載並快取全台灣的廁所資料，之後即使在沒有網路的環境下也能查看附近的公廁位置。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "如何回報新的廁所或錯誤資訊？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "你可以在 App 中透過社群評價功能回報廁所的最新狀況。我們也會定期從政府公開資料更新資料庫。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "台北車站附近有公廁嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "有的！台北車站及周邊有多間公共廁所，包含車站內部、地下街、以及附近的百貨公司。使用找廁所 App 可以快速定位最近的選項。"
                 }
             }
         ]
@@ -135,6 +177,16 @@
         }
         nav a { color: var(--text-muted); text-decoration: none; }
         nav a:hover { color: var(--text); }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #4a7aff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .back-btn:hover { opacity: 0.8; }
 
         /* Hero */
         .hero {
@@ -349,6 +401,8 @@
 
     <div class="container">
         <nav>
+            <a href="map/" class="back-btn">&larr; 返回地圖</a>
+            <span style="margin:0 0.3rem">|</span>
             <a href="../">Kenny Studio</a>
             <span>/</span>
             <span>找廁所！</span>
@@ -460,6 +514,46 @@
                 <summary>支援哪些語言？</summary>
                 <p>目前支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。</p>
             </details>
+            <details>
+                <summary>可以離線使用嗎？</summary>
+                <p>App 會在有網路時自動下載並快取全台灣的廁所資料，之後即使在沒有網路的環境下也能查看附近的公廁位置。</p>
+            </details>
+            <details>
+                <summary>如何回報新的廁所或錯誤資訊？</summary>
+                <p>你可以在 App 中透過社群評價功能回報廁所的最新狀況。我們也會定期從政府公開資料更新資料庫。</p>
+            </details>
+            <details>
+                <summary>台北車站附近有公廁嗎？</summary>
+                <p>有的！台北車站及周邊有多間公共廁所，包含車站內部、地下街、以及附近的百貨公司。使用找廁所 App 可以快速定位最近的選項。</p>
+            </details>
+        </section>
+
+        <!-- Popular areas -->
+        <section>
+            <div class="section-label">熱門地區公廁</div>
+            <h2>全台灣各地都能找到廁所</h2>
+            <p>無論你在台北、台中、高雄、台南還是花東旅遊，找廁所 App 都涵蓋當地的公共廁所資料，包含捷運站、火車站、觀光景點周邊。</p>
+            <div class="place-tags">
+                <span class="place-tag">台北公廁</span>
+                <span class="place-tag">台中公廁</span>
+                <span class="place-tag">高雄公廁</span>
+                <span class="place-tag">台南公廁</span>
+                <span class="place-tag">桃園公廁</span>
+                <span class="place-tag">新北公廁</span>
+                <span class="place-tag">花蓮公廁</span>
+                <span class="place-tag">台東公廁</span>
+                <span class="place-tag">墾丁公廁</span>
+                <span class="place-tag">九份公廁</span>
+                <span class="place-tag">日月潭公廁</span>
+                <span class="place-tag">阿里山公廁</span>
+            </div>
+        </section>
+
+        <!-- Web map link -->
+        <section>
+            <div class="section-label">線上找廁所</div>
+            <h2>不想下載 App？試試網頁版地圖</h2>
+            <p>我們也提供<a href="map/" style="color:var(--accent);font-weight:600;">線上公廁地圖</a>，在瀏覽器中就能快速查看附近的公共廁所位置。想要更完整的體驗？下載 App 享受離線查詢、社群評價等進階功能。</p>
         </section>
 
         <!-- CTA -->
