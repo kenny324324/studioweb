@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整合 21 家物流的開發札記：從零做一個包裹追蹤 App — Kenny Studio</title>
+    <meta name="description" content="做取貨吧 時遇到的真實工程問題：每家物流 API 格式不一、爬蟲限速、法規邊界、狀態機設計。寫給好奇獨立開發細節的工程師與產品人。">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/guide/package-tracking-integration/">
+    <link rel="icon" type="image/png" href="../../assets/favicon-64.png">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="整合 21 家物流的開發札記">
+    <meta property="og:description" content="做取貨吧時遇到的真實工程問題、API 整合細節、法規與產品權衡。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/guide/package-tracking-integration/">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="article:published_time" content="2026-04-24">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "整合 21 家物流的開發札記：從零做一個包裹追蹤 App",
+        "datePublished": "2026-04-24",
+        "author": { "@type": "Person", "name": "Kenny" },
+        "publisher": { "@type": "Organization", "name": "Kenny Studio" }
+    }
+    </script>
+    <link rel="stylesheet" href="../../assets/fonts/kenny-sans.css">
+    <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
+    <header class="site-header">
+        <div class="container-shell header-inner">
+            <a href="../../" class="brand">Kenny Studio</a>
+            <nav class="site-nav" aria-label="主要導覽">
+                <a href="../../">Home</a>
+                <a href="../../#apps">Apps</a>
+                <a href="../" aria-current="page">Guide</a>
+                <a href="../../about/">About</a>
+                <a href="../../contact/">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="section">
+        <div class="container-reading">
+            <article class="prose">
+            <p class="page-meta"><a href="../">← Guide</a> · Kenny · 2026-04-24 · 12 min read · 開發札記</p>
+            <h1>整合 21 家物流的開發札記：從零做一個包裹追蹤 App</h1>
+
+            <p>這是一篇寫給想知道「獨立 App 開發者的實際工程現場長什麼樣」的人的記錄。<a href="../../packagetracker/">取貨吧</a> 目前整合臺灣 21 家物流業者，表面上看起來就是輸入一串追蹤號、顯示狀態，實際做下去才發現每一家的坑都不一樣。這篇寫一些我在整合過程中遇到的真實問題，以及決定怎麼處理的思考。</p>
+
+            <h2>為什麼會想做這個</h2>
+
+            <p>2025 年初我算了一下過去 3 個月收過的包裹：37 個，分布在 8 家不同物流。每次 MOMO、蝦皮、PChome、電商 A、電商 B 下單，物流都不一樣，有時候還會臨時切換（例如「黑貓塞車改宅配通」）。每次都要開不同網站、複製追蹤號、等 loading。有幾次甚至要翻通知記錄找追蹤號。</p>
+
+            <p>我心想，這不就是一個典型的「狀態機聚合」問題嗎？每家物流的包裹都在經歷類似的狀態流：<code>收件 → 分揀 → 出貨 → 派送中 → 已送達 / 已取貨</code>。只要我能把每家的 API 或網頁抓下來，轉成統一格式，使用者就不用再煩惱這些差異。</p>
+
+            <p>實作了之後才發現，「聚合 21 家」不是 3 倍難，是 3<sup>3</sup> 倍難。</p>
+
+            <h2>資料來源：API、半開放 API、爬蟲</h2>
+
+            <p>21 家業者，資料來源大致分三類：</p>
+
+            <h3>A. 有正式 API（少數）</h3>
+            <p>通常是國際級物流（FedEx、UPS、DHL），或有接企業客戶的臺灣大型物流。這類我需要申請 API key、附上公司資料，門檻高但資料格式最穩定。對一人工作室而言，要拿 API 權限要花時間交涉，有些乾脆不核發給個人開發者。</p>
+
+            <h3>B. 公開查詢頁（HTML 解析）</h3>
+            <p>大多數臺灣物流屬於這類。他們有一個公開的「貨況查詢」頁，輸入追蹤號就能查。這類頁面的原始 HTML 是可以抓的，但：</p>
+            <ul>
+                <li>HTML 結構沒有 API 那麼穩，改版就壞。我在 9 個月內重寫過其中 3 家的解析邏輯。</li>
+                <li>有些加了 Cloudflare 或其他 bot 偵測，直接 requests 會被 403。要模擬 User-Agent、cookie、甚至 TLS 指紋。</li>
+                <li>有速率限制，連發幾次會被 ban IP 半小時到一天。</li>
+            </ul>
+
+            <h3>C. 隱藏 XHR（半開放 API）</h3>
+            <p>介於 A 和 B 之間：該業者的網頁背後其實是在 call 一個 JSON API，只是沒有公開文件。打開瀏覽器開發者工具就能看到。這類是最好用的來源——格式穩、速度快、不需要解析 HTML——但法律灰色，因為它不是公開提供給第三方的端點。</p>
+
+            <p>我整合時一律<strong>優先採用 C，其次 A，最後 B</strong>，但對於敏感的 C 類端點，我會嚴格遵守：</p>
+            <ul>
+                <li>只在使用者主動查詢時才發 request，不做背景輪詢爆流量。</li>
+                <li>加入合理 delay 與 retry backoff，避免對方伺服器壓力。</li>
+                <li>如果對方明示禁止第三方使用，改用 B 方案或下架該家。</li>
+            </ul>
+
+            <h2>狀態機統一化：抓到資料後的真正挑戰</h2>
+
+            <p>拿到每家物流的原始狀態字串後，下一步是「映射到統一狀態機」。聽起來簡單，做起來才是惡夢。</p>
+
+            <h3>真實例子：一個字串要對應到哪個狀態？</h3>
+            <ul>
+                <li>「已抵達轉運站」—— 是分揀中還是派送中？不同業者用法不一。</li>
+                <li>「已出貨」—— 出給消費者還是出給下一個中繼站？</li>
+                <li>「配送中，預計今日送達」vs「配送中」—— 同一個狀態嗎？</li>
+                <li>「投遞失敗」—— 是「客戶拒收」、「地址錯誤」、還是「家中無人」？</li>
+                <li>「已送達」vs「已簽收」—— 技術上是兩個事件，但使用者會覺得是同一件事。</li>
+            </ul>
+
+            <p>我的處理策略是：<strong>維持一個精簡的內部狀態機（5 個狀態），但保留原始文字作為「明細」</strong>。內部狀態給 UI 用（畫進度條），原始文字給使用者看（完整軌跡）。</p>
+
+            <p>5 個內部狀態：</p>
+            <ol>
+                <li><code>.created</code> — 收件確認，物流公司知道這筆</li>
+                <li><code>.inTransit</code> — 在運輸網絡中流動</li>
+                <li><code>.outForDelivery</code> — 最後一哩，派送中</li>
+                <li><code>.delivered</code> — 已送達 / 已取貨</li>
+                <li><code>.exception</code> — 異常（退件、地址錯誤、無人收件等）</li>
+            </ol>
+
+            <p>這個抽象對 UI 顯示剛好夠，而且 21 家的狀態都能對應上。關鍵是不要嘗試把「精細度」全部暴露給 UI，使用者其實看不懂「抵達 XX 轉運站」對他們的意義——他們只想知道「還在運 / 快到了 / 到了」。</p>
+
+            <h2>產品決策：該不該自動輪詢？</h2>
+
+            <p>這是一個我想了很久的產品問題。使用者當然希望「到了馬上推播通知」，但自動輪詢的代價大：</p>
+
+            <ul>
+                <li>每個使用者的每筆包裹，每小時至少 call 一次，很快就會撞上業者速率限制。</li>
+                <li>背景輪詢的服務費用（AWS Lambda / Vercel Functions）會隨使用者量線性增加。</li>
+                <li>某些業者明示禁止第三方大量自動化查詢。</li>
+            </ul>
+
+            <p>最後我的設計是：</p>
+            <ul>
+                <li><strong>前景主動更新：</strong>使用者打開 App 時才 call API。</li>
+                <li><strong>後景保守更新：</strong>使用 iOS 的 Background Fetch，由系統決定頻率（通常 1–3 小時一次），且只針對「預期今天會送達」的包裹。</li>
+                <li><strong>推播通知：</strong>到貨那一刻觸發，不做「派送中」這種中間態的通知（因為使用者不需要每 15 分鐘被打擾）。</li>
+            </ul>
+
+            <p>這個設計犧牲了一點「即時感」，換來可持續性與合法性。我還沒收到過「太慢」的客訴，反而有使用者感謝「不會一直跳通知煩我」。</p>
+
+            <h2>AI 截圖辨識：真的有人用嗎？</h2>
+
+            <p>「取貨吧」其中一個賣點功能，是可以拍照或截圖店家寄來的取貨通知，App 自動抓出追蹤號與物流業者。實際做下去才發現，這個功能同時是最好用也最難做的。</p>
+
+            <h3>為什麼難？</h3>
+            <ul>
+                <li>取貨通知的版面沒有標準。LINE、Email、簡訊、各電商 App 自己的通知，格式完全不同。</li>
+                <li>追蹤號可能藏在 QR code、條碼、或文字中。QR 要解碼、文字要 OCR、業者判定要推論。</li>
+                <li>OCR 錯一個字，整個追蹤號就無效。臺灣很多中英混排、簡繁混用、全形半形交雜。</li>
+            </ul>
+
+            <h3>怎麼做？</h3>
+            <p>我用 iOS 內建的 Vision framework 做圖片 OCR（離線、快、免費），再用一個小型的啟發式判定模型推論業者。判定邏輯舉例：</p>
+            <ul>
+                <li>追蹤號是 14 位純數字 → 很可能是 7-11 交貨便</li>
+                <li>追蹤號是「TW」開頭 + 12 位 → 可能是國際快遞</li>
+                <li>圖中同時出現「黑貓」、「Yamato」或「宅急便」字樣 → 黑貓</li>
+            </ul>
+
+            <p>這層判定大約 85% 準確，剩下 15% 會要求使用者手動確認業者。我覺得這個比例還可以接受——比要使用者每次都選擇好。</p>
+
+            <h2>支付與商業模式</h2>
+
+            <p>取貨吧是免費下載，核心功能（查詢、推播、桌面小工具）全部免費。付費版解鎖的是：</p>
+            <ul>
+                <li>追蹤包裹數量無上限（免費版限 10 個活躍包裹）</li>
+                <li>歷史紀錄永久保留（免費版 3 個月）</li>
+                <li>匯出 CSV / Excel 報表（給會計或電商小店主用）</li>
+                <li>自訂通知規則（例如「只在工作時間外通知」）</li>
+            </ul>
+
+            <p>定價策略：一次性買斷 NT$ 90，不做訂閱。這違反矽谷獨立開發者的常識建議（普遍建議訂閱更健康），但我刻意選一次性，理由是：</p>
+            <ul>
+                <li>工具類 App 的價值是「當下解決問題」，使用者不會每月都想被扣錢。</li>
+                <li>訂閱的客服成本（退費、取消、詢問）對一人工作室是 overhead。</li>
+                <li>我自己討厭訂閱，做自己討厭的東西不會有動力。</li>
+            </ul>
+
+            <p>結果：轉換率比訂閱模型低，但留存率（大於 6 個月仍開 App 的使用者比例）高。整體上總收入相當，生活品質更好。</p>
+
+            <h2>幾個學到的事</h2>
+
+            <ol>
+                <li><strong>聚合型產品的價值來自「最後一家整合」。</strong>整合 5 家跟整合 10 家差別不大，但整合 15 家 → 20 家是一個明顯的使用者體驗門檻，因為「我現在用的 App 絕大多數包裹都能查」。</li>
+                <li><strong>維護成本長期大於開發成本。</strong>每家業者改版一次就要修，我現在每兩週會花半天檢查所有整合是否正常。</li>
+                <li><strong>不要嘗試完美。</strong>有 1–2 家業者的 API 特別難搞，我選擇暫時不整合、清楚告知使用者。寧可 19/21 覆蓋率夠穩，也不要 21/21 常常壞。</li>
+                <li><strong>使用者會原諒「偶爾抓不到」，不會原諒「資料錯誤」。</strong>我寧可不顯示狀態，也不要顯示過期或錯誤的狀態。</li>
+            </ol>
+
+            <hr>
+            <p class="page-meta">這篇寫得比較長，因為我想把整合工作的真實複雜度說清楚。如果你是工程師同行、或正在做類似聚合產品，歡迎 <a href="../../contact/">來信聊聊</a>。</p>
+
+            <h2>延伸閱讀</h2>
+            <ul>
+                <li><a href="../solo-dev-first-year/">獨立 App 開發工作室一年：從找廁所到取貨吧的開發心得</a></li>
+                <li><a href="../../packagetracker/">取貨吧 產品頁</a></li>
+            </ul>
+
+                <hr>
+                <div data-ad-unit="guideArticle" data-ad-format="auto"></div>
+                <p class="page-meta">相關產品：<a href="../../packagetracker/">取貨吧 — 包裹追蹤 App</a></p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container-shell">
+            <div class="footer-grid">
+                <div class="footer-group">
+                    <h2>Products</h2>
+                    <ul>
+                        <li><a href="../../mish/">Mish 讀書筆記</a></li>
+                        <li><a href="../../packagetracker/">取貨吧 包裹追蹤</a></li>
+                        <li><a href="../../findtoilet/">找廁所 公廁地圖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Guide</h2>
+                    <ul>
+                        <li><a href="../">全部文章</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Studio</h2>
+                    <ul>
+                        <li><a href="../../about/">關於 Kenny Studio</a></li>
+                        <li><a href="../../contact/">聯絡與支援</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Privacy</h2>
+                    <ul>
+                        <li><a href="../../privacy/">隱私政策總覽</a></li>
+                        <li><a href="../../privacy/website/">網站隱私說明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <span>&copy; 2026 Kenny Studio</span>
+                <span>臺灣臺北 · 一人工作室</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/ads-config.js" defer></script>
+    <script src="../../assets/ads.js" defer></script>
+</body>
+</html>

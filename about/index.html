@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於 Kenny Studio — 臺灣獨立 iOS App 工作室</title>
+    <meta name="description" content="Kenny Studio 是來自臺灣的一人 iOS 開發工作室，產品包括 Mish、取貨吧與找廁所。關於我們的開發理念、技術選擇、以及產品背後的故事。">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/about/">
+    <link rel="icon" type="image/png" href="../assets/favicon-64.png">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="關於 Kenny Studio — 臺灣獨立 iOS App 工作室">
+    <meta property="og:description" content="一人工作室的開發理念、技術選擇，以及 Mish、取貨吧、找廁所背後的故事。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/about/">
+    <meta property="og:locale" content="zh_TW">
+    <link rel="stylesheet" href="../assets/fonts/kenny-sans.css">
+    <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
+    <header class="site-header">
+        <div class="container-shell header-inner">
+            <a href="../" class="brand">Kenny Studio</a>
+            <nav class="site-nav" aria-label="主要導覽">
+                <a href="../">Home</a>
+                <a href="../#apps">Apps</a>
+                <a href="../guide/">Guide</a>
+                <a href="./" aria-current="page">About</a>
+                <a href="../contact/">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="section">
+        <div class="container-reading">
+            <article class="prose">
+                <h1>關於 Kenny Studio</h1>
+                <p class="page-meta">About · 一人工作室，一次一個 App</p>
+
+                <p>Kenny Studio 是我在 2023 年底開始經營的獨立開發者品牌，位於臺灣臺北。我叫 Kenny，過去在軟體公司擔任全端工程師，後來決定把重心放在自己想做的工具類 App 上。「Studio」這個詞聽起來像團隊，但實際上就是一個人：從構思、設計、開發、美術、客服到文件，我一人包辦。這不是因為想把自己累死，而是我相信對工具類產品來說，垂直整合的決策速度往往比人力規模更重要。</p>
+
+                <h2>我們做什麼</h2>
+                <p>我們做那種「明明應該存在，但打開 App Store 找了半天找不到理想選擇」的小工具。這些 App 的共通點是：</p>
+                <ul>
+                    <li><strong>解決一件具體的小事。</strong>不是另一個「生活百科」，而是「此時此刻我想知道最近的廁所在哪」這種層級的問題。</li>
+                    <li><strong>尊重使用者的注意力。</strong>不濫發推播、不硬塞 onboarding、不跟你要用不到的權限。</li>
+                    <li><strong>免費可用、進階付費。</strong>核心功能免費使用，不把基本體驗扣押當成販售手段；進階功能以 App 內購買或訂閱解鎖。</li>
+                </ul>
+
+                <h2>目前的產品</h2>
+
+                <h3>Mish｜讀書筆記與閱讀紀錄</h3>
+                <p>一個安靜的閱讀管理 App：書櫃、書單、專注計時、筆記與統計。做 Mish 的起點是我自己讀書常常「讀了什麼、讀到哪、想過什麼」全部散在不同地方。市面上的閱讀 App 要嘛社交壓力太大，要嘛把閱讀變成打卡任務。Mish 想做的是反過來的事：不催你、不評判，安靜地幫你記得。<a href="../mish/">產品頁面 →</a></p>
+
+                <h3>取貨吧｜包裹追蹤</h3>
+                <p>一個整合 21 家臺灣物流的包裹追蹤 App，支援 AI 截圖辨識（把取貨通知截圖丟給它就能自動擷取單號）、到貨與取貨提醒、桌面小工具。起點是我自己網購太多，電商用的物流不一，每次都要開不同網站查貨態。整合多家物流的過程比想像複雜——每家格式不一樣。過程的技術細節整理在<a href="../guide/package-tracking-integration/">開發札記</a>。<a href="../packagetracker/">產品頁面 →</a></p>
+
+                <h3>找廁所｜公廁地圖</h3>
+                <p>一個公共廁所地圖 App。資料來源是環境部公開的全臺公廁資料集（超過一萬個地點），加上使用者的現場評價與回報。這個 App 的起點很蠢：2024 年夏天，我在臺北車站地下街迷路，繞了 20 分鐘找不到廁所。回家後查了環境部的公開資料，發現政府其實有完整的公廁資料庫，只是沒有包裝成好用的前端。那個週末我寫了第一版 prototype，幾個月後上架。現在支援繁中、英、日、韓四種語言。<a href="../findtoilet/">產品頁面 →</a></p>
+
+                <h2>開發理念</h2>
+
+                <h3>資料依需要而蒐集</h3>
+                <p>每個產品只處理它的功能真正需要的資料，而且如實揭露。找廁所不需要帳號，定位只在裝置上即時使用；取貨吧與 Mish 因為要跨裝置同步，才有帳號與雲端資料。三個產品的資料處理方式各自寫在<a href="../privacy/">對應的隱私政策</a>，不用一句「我們不蒐集資料」概括所有產品。</p>
+
+                <h3>離線也要能用</h3>
+                <p>工具不該因為沒網路就完全壞掉。找廁所把全臺公廁資料內建並快取在裝置上，山區、地下街也能查清單；取貨吧會保留最近的查詢結果，臨時斷網也能翻看。</p>
+
+                <h3>介面克制</h3>
+                <p>貼近 iOS 原生介面慣例，不做滿版漸層、不做炫技動畫。使用者打開 App 第一秒就應該能做他來做的事。</p>
+
+                <h2>技術堆疊</h2>
+                <ul>
+                    <li><strong>App 端：</strong>Swift 與 SwiftUI（取貨吧、找廁所）；Flutter（Mish）</li>
+                    <li><strong>資料與後端：</strong>SwiftData 與 CloudKit（找廁所評價）、Firebase（取貨吧與 Mish 的帳號、同步與推播）、政府公開資料集、物流查詢服務</li>
+                    <li><strong>Web：</strong>靜態 HTML 與原生 CSS／JavaScript，部署在 GitHub Pages。沒有前端框架、沒有 build step。</li>
+                </ul>
+
+                <h2>為什麼先做臺灣市場？</h2>
+                <ul>
+                    <li>我是臺灣人，能感受到這裡還缺哪些小工具；英文世界的「niche」往往臺灣用不到。</li>
+                    <li>在地資料集（公廁、物流）有獨特的門檻：國際級的物流 App 不會支援黑貓宅急便，Google 地圖也不會告訴你這是特優級公廁。</li>
+                    <li>臺灣的 iOS 市佔率比全球平均高，願意為好工具付費的使用者也不少。</li>
+                </ul>
+
+                <h2>怎麼支持我們</h2>
+                <p>最直接的方式是下載我們的 App：<a href="../mish/">Mish</a>、<a href="../packagetracker/">取貨吧</a>、<a href="../findtoilet/">找廁所</a>。如果你用得滿意，在 App Store 留一則評論對獨立開發者幫助非常大。此外，你也可以：</p>
+                <ul>
+                    <li>閱讀並分享我們的<a href="../guide/">開發札記與攻略</a>。</li>
+                    <li>在 App 內回報錯誤資料或建議新功能。</li>
+                    <li>直接 Email 我：<a href="mailto:kenny4work324@gmail.com">kenny4work324@gmail.com</a>。</li>
+                </ul>
+
+                <hr>
+                <p class="page-meta">感謝你讀到這裡。Kenny Studio 不買廣告版位、不做 SEO 競價，我們靠的是你願意把喜歡的 App 告訴身邊的人。</p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container-shell">
+            <div class="footer-grid">
+                <div class="footer-group">
+                    <h2>Products</h2>
+                    <ul>
+                        <li><a href="../mish/">Mish 讀書筆記</a></li>
+                        <li><a href="../packagetracker/">取貨吧 包裹追蹤</a></li>
+                        <li><a href="../findtoilet/">找廁所 公廁地圖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Guide</h2>
+                    <ul>
+                        <li><a href="../guide/">全部文章</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Studio</h2>
+                    <ul>
+                        <li><a href="./" aria-current="page">關於 Kenny Studio</a></li>
+                        <li><a href="../contact/">聯絡與支援</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Privacy</h2>
+                    <ul>
+                        <li><a href="../privacy/">隱私政策總覽</a></li>
+                        <li><a href="../privacy/website/">網站隱私說明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <span>&copy; 2026 Kenny Studio</span>
+                <span>臺灣臺北 · 一人工作室</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
