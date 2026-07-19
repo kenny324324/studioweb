@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Local tooling
+node_modules/
+
+# 內部規劃文件與 QA 證據（不公開部署）
+Files/
+
+# 本機工具設定
+.claude/
