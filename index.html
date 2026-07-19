@@ -1,184 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="pKMjK0859MtcqL2gR8n0npRlkoIcC2j44IJpKHi6nPs" />    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenny Studio — 獨立 App 開發工作室</title>
-    <meta name="description" content="Kenny Studio 獨立開發工作室，專注打造高品質 iOS App。產品包含找廁所！Find Toilet、取貨吧 PackageTracker。">
+    <meta name="google-site-verification" content="pKMjK0859MtcqL2gR8n0npRlkoIcC2j44IJpKHi6nPs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenny Studio — 臺灣獨立 iOS App 工作室｜Mish、取貨吧、找廁所</title>
+    <meta name="description" content="Kenny Studio 是臺灣的一人 iOS 開發工作室，專注做好日常小工具：Mish（讀書筆記與閱讀紀錄）、取貨吧（包裹追蹤）、找廁所（全臺公廁地圖）。">
     <link rel="canonical" href="https://kenny324324.github.io/studioweb/">
-    <link rel="icon" type="image/png" href="assets/MyLogo.png">
+    <link rel="icon" type="image/png" href="assets/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/logo-192.png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Kenny Studio — 獨立 App 開發工作室">
-    <meta property="og:description" content="專注打造高品質 iOS App。產品：找廁所！Find Toilet、取貨吧 PackageTracker。">
+    <meta property="og:title" content="Kenny Studio — 臺灣獨立 iOS App 工作室">
+    <meta property="og:description" content="專注做好日常小工具：Mish 讀書筆記、取貨吧包裹追蹤、找廁所公廁地圖。">
     <meta property="og:url" content="https://kenny324324.github.io/studioweb/">
     <meta property="og:site_name" content="Kenny Studio">
     <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://kenny324324.github.io/studioweb/assets/MyLogo.png">
 
-    <!-- Google AdSense -->
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Kenny Studio",
+        "url": "https://kenny324324.github.io/studioweb/",
+        "description": "臺灣獨立 iOS App 開發工作室，產品包括 Mish｜讀書筆記與閱讀紀錄、Pickup 取貨吧、FindToilets 找廁所。",
+        "founder": { "@type": "Person", "name": "Kenny" },
+        "email": "kenny4work324@gmail.com"
+    }
+    </script>
+
+    <!-- Google AdSense（站點驗證用；本頁不設任何廣告版位） -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9616816354780961" crossorigin="anonymous"></script>
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-primary: #000000;
-            --text-secondary: #555555;
-            --text-tertiary: #888888;
-            --spacing-unit: 2rem;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            /* Monospace font stack for that technical/developer aesthetic */
-            font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background-color: var(--bg-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 0 var(--spacing-unit);
-        }
-
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        header {
-            padding-top: 5rem;
-            padding-bottom: 4rem;
-        }
-
-        .logo {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        section {
-            margin-bottom: 5rem;
-        }
-
-        h1 {
-            font-size: 1.75rem; /* Slightly smaller for mono to keep it clean */
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 1.4;
-            margin-bottom: 2rem;
-            max-width: 640px;
-            color: var(--text-primary);
-        }
-
-        h2 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-tertiary);
-            margin-bottom: 1.25rem;
-            font-weight: 600;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            max-width: 600px;
-        }
-
-        .contact-link {
-            display: inline-block;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-            background-color: #f4f4f4;
-            padding: 0.5rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .contact-link:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
-        footer {
-            padding: 4rem 0 3rem;
-            border-top: 1px dashed #e0e0e0;
-            margin-top: auto;
-            color: var(--text-tertiary);
-            font-size: 0.8rem;
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.4rem;
-            }
-            
-            body {
-                padding: 0 1.25rem;
-            }
-            
-            header {
-                padding-top: 3rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/fonts/kenny-sans.css">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
 
-    <div class="container">
-        <header>
-            <div class="logo">Kenny Studio</div>
-        </header>
+    <header class="site-header">
+        <div class="container-shell header-inner">
+            <a href="./" class="brand">Kenny Studio</a>
+            <nav class="site-nav" aria-label="主要導覽">
+                <a href="./" aria-current="page">Home</a>
+                <a href="./#apps">Apps</a>
+                <a href="guide/">Guide</a>
+                <a href="about/">About</a>
+                <a href="contact/">Support</a>
+            </nav>
+        </div>
+    </header>
 
-        <main>
-            <section>
-                <h1>Crafting intuitive mobile experiences<br>for the modern world.</h1>
-                <p>We are an independent creative studio focused on building high-quality mobile applications. Our goal is to solve real problems with clean code and thoughtful design.</p>
-            </section>
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="hero hero-brand">
+            <div class="container-shell">
+                <p class="eyebrow">Kenny Studio · Taiwan Indie iOS Studio</p>
+                <h1>把日常小事，做成好用的&nbsp;iOS&nbsp;App</h1>
+                <p class="lede">Kenny Studio 是位於臺灣臺北的一人開發工作室。從閱讀紀錄、包裹追蹤到找公廁，每個 App 只專心解決一件具體的事：介面貼近 iOS 原生、尊重你的注意力，把小事做到順手。</p>
+                <div class="hero-cta">
+                    <a class="btn btn-primary" href="#apps">查看我們的 App</a>
+                    <a class="action-link" href="about/">了解 Kenny Studio</a>
+                </div>
+                <ul class="hero-icons" data-motion="spatial">
+                    <li>
+                        <a href="mish/">
+                            <picture>
+                                <source srcset="assets/mish/icon-160.avif" type="image/avif">
+                                <source srcset="assets/mish/icon-160.webp" type="image/webp">
+                                <img class="app-icon" src="assets/mish/icon-160.png" alt="Mish App icon" width="80" height="80" fetchpriority="high">
+                            </picture>
+                            <span>Mish</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="packagetracker/">
+                            <picture>
+                                <source srcset="assets/packagetracker/icon-160.avif" type="image/avif">
+                                <source srcset="assets/packagetracker/icon-160.webp" type="image/webp">
+                                <img class="app-icon" src="assets/packagetracker/icon-160.png" alt="取貨吧 App icon" width="80" height="80" fetchpriority="high">
+                            </picture>
+                            <span>取貨吧</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="findtoilet/">
+                            <picture>
+                                <source srcset="assets/findtoilet/icon-160.avif" type="image/avif">
+                                <source srcset="assets/findtoilet/icon-160.webp" type="image/webp">
+                                <img class="app-icon" src="assets/findtoilet/icon-160.png" alt="找廁所 App icon" width="80" height="80" fetchpriority="high">
+                            </picture>
+                            <span>找廁所</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-            <section>
-                <h2>01 / About</h2>
-                <p>Kenny Studio is dedicated to mobile innovation. We publish iOS applications that prioritize performance, privacy, and user simplicity. We are committed to ensuring a safe and reliable environment for all our users.</p>
-            </section>
+        <!-- Apps -->
+        <section class="section" id="apps">
+            <div class="container-shell">
+                <div class="section-head">
+                    <p class="eyebrow">01 / Apps</p>
+                    <h2>三個 App，各自做好一件事</h2>
+                    <p>全部由 Kenny Studio 設計與開發（Apps by Kenny Studio），在 App Store 上架，繁體中文優先。</p>
+                </div>
+                <div class="product-grid">
+                    <article class="product-card">
+                        <picture>
+                            <source srcset="assets/mish/icon-160.avif" type="image/avif">
+                            <source srcset="assets/mish/icon-160.webp" type="image/webp">
+                            <img class="app-icon" src="assets/mish/icon-160.png" alt="" width="64" height="64" loading="lazy">
+                        </picture>
+                        <h3>Mish</h3>
+                        <p class="product-claim">安靜地陪你讀完每一本書</p>
+                        <p class="product-desc">書櫃與書單管理、專注計時、讀書筆記與閱讀統計。不催你，也不評判你的進度。</p>
+                        <div class="product-links">
+                            <a class="action-link" href="mish/">認識 Mish</a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <picture>
+                            <source srcset="assets/packagetracker/icon-160.avif" type="image/avif">
+                            <source srcset="assets/packagetracker/icon-160.webp" type="image/webp">
+                            <img class="app-icon" src="assets/packagetracker/icon-160.png" alt="" width="64" height="64" loading="lazy">
+                        </picture>
+                        <h3>取貨吧</h3>
+                        <p class="product-claim">所有包裹，一處掌握</p>
+                        <p class="product-desc">超商、宅配與國際快遞追蹤，AI 截圖辨識單號、到貨與取貨提醒、桌面小工具。</p>
+                        <div class="product-links">
+                            <a class="action-link" href="packagetracker/">認識取貨吧</a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <picture>
+                            <source srcset="assets/findtoilet/icon-160.avif" type="image/avif">
+                            <source srcset="assets/findtoilet/icon-160.webp" type="image/webp">
+                            <img class="app-icon" src="assets/findtoilet/icon-160.png" alt="" width="64" height="64" loading="lazy">
+                        </picture>
+                        <h3>找廁所</h3>
+                        <p class="product-claim">快速找到附近適合的公共廁所</p>
+                        <p class="product-desc">全臺公廁地圖與清單，含評等、無障礙與親子設施資訊，支援中英日韓四種語言。</p>
+                        <div class="product-links">
+                            <a class="action-link" href="findtoilet/">認識找廁所</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-            <section>
-                <h2>02 / Apps</h2>
-                <p><a href="findtoilet/" class="contact-link">找廁所！Find Toilet</a></p>
-                <p>GPS 定位附近公共廁所，查看廁所評等與無障礙設施。全台公廁資料庫。</p>
-                <p><a href="packagetracker/" class="contact-link">取貨吧 PackageTraker</a></p>
-                <p>整合 21 家物流的包裹追蹤 App。AI 截圖掃描、到貨推播、桌面小工具。</p>
-            </section>
+        <!-- 原則 -->
+        <section class="section">
+            <div class="container-shell">
+                <div class="section-head">
+                    <p class="eyebrow">02 / Principles</p>
+                    <h2>工作室的三個原則</h2>
+                </div>
+                <div class="trust-list">
+                    <div class="trust-item">
+                        <h3>解決具體的小事</h3>
+                        <p>不做「什麼都想做」的 App。每個產品都從一個真實、具體的日常麻煩開始，把那件事做到好用為止。</p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>尊重注意力</h3>
+                        <p>不硬塞 onboarding、不濫發推播。打開 App 的第一秒，就能做你來做的那件事。</p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>貼近原生的介面</h3>
+                        <p>以 SwiftUI 與原生框架開發，遵循 iOS 介面慣例。各產品的資料處理方式，如實寫在<a href="privacy/">各自的隱私政策</a>。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <section>
-                <h2>03 / Contact</h2>
-                <p>For inquiries, support, or partnership opportunities, please email us directly.</p>
-                <a href="mailto:kenny4work324@gmail.com" class="contact-link">kenny4work324@gmail.com</a>
-            </section>
-        </main>
+        <!-- Guide -->
+        <section class="section">
+            <div class="container-shell">
+                <div class="section-head">
+                    <p class="eyebrow">03 / Guide</p>
+                    <h2>精選文章</h2>
+                    <p>圍繞產品領域的實用攻略，以及一人工作室的開發札記。</p>
+                </div>
+                <ul class="post-list">
+                    <li>
+                        <a class="post-title" href="guide/taipei-station-toilet/">台北車站找廁所完整攻略：13 個最近最乾淨的選擇</a>
+                        <p class="post-excerpt">車站內、地下街、周邊百貨的 13 個公廁選項，標示位置、開放時間與無障礙狀況。</p>
+                        <p class="post-meta">公共廁所攻略 · 相關產品：<a href="findtoilet/">找廁所</a></p>
+                    </li>
+                    <li>
+                        <a class="post-title" href="guide/accessible-toilet/">全臺無障礙廁所使用指南：怎麼找、誰能用、常見誤解</a>
+                        <p class="post-excerpt">無障礙廁所的設計要求、法規標準與使用禮儀，寫給需要的人與想尊重設施的人。</p>
+                        <p class="post-meta">公共廁所攻略 · 相關產品：<a href="findtoilet/">找廁所</a></p>
+                    </li>
+                    <li>
+                        <a class="post-title" href="guide/solo-dev-first-year/">獨立 App 開發一年心得：從找廁所到取貨吧</a>
+                        <p class="post-excerpt">一人工作室做 iOS App 的第一年：產品怎麼選、時間怎麼分、收入從哪來。</p>
+                        <p class="post-meta">開發札記</p>
+                    </li>
+                </ul>
+                <p><a class="action-link" href="guide/">瀏覽全部文章</a></p>
+            </div>
+        </section>
 
-        <footer>
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> Kenny Studio. All rights reserved.</p>
-        </footer>
-    </div>
+        <!-- Contact / Trust -->
+        <section class="section">
+            <div class="container-shell">
+                <div class="section-head">
+                    <p class="eyebrow">04 / Contact</p>
+                    <h2>聯絡與支援</h2>
+                </div>
+                <div class="trust-list">
+                    <div class="trust-item">
+                        <h3>使用問題與回報</h3>
+                        <p>三個 App 的使用問題、錯誤回報與資料更正，都由 Kenny 本人回覆。<a href="contact/">前往支援頁</a>。</p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>Email</h3>
+                        <p><a href="mailto:kenny4work324@gmail.com">kenny4work324@gmail.com</a><br>一般事項 72 小時內回覆。</p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>隱私政策</h3>
+                        <p>網站與各 App 的資料處理方式分別說明：<a href="privacy/">隱私政策總覽</a>。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <footer class="site-footer">
+        <div class="container-shell">
+            <div class="footer-grid">
+                <div class="footer-group">
+                    <h2>Products</h2>
+                    <ul>
+                        <li><a href="mish/">Mish 讀書筆記</a></li>
+                        <li><a href="packagetracker/">取貨吧 包裹追蹤</a></li>
+                        <li><a href="findtoilet/">找廁所 公廁地圖</a></li>
+                        <li><a href="findtoilet/map/">找廁所 網頁版地圖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Guide</h2>
+                    <ul>
+                        <li><a href="guide/">全部文章</a></li>
+                        <li><a href="guide/taipei-station-toilet/">台北車站找廁所攻略</a></li>
+                        <li><a href="guide/solo-dev-first-year/">獨立開發一年心得</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Studio</h2>
+                    <ul>
+                        <li><a href="about/">關於 Kenny Studio</a></li>
+                        <li><a href="contact/">聯絡與支援</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Privacy</h2>
+                    <ul>
+                        <li><a href="privacy/">隱私政策總覽</a></li>
+                        <li><a href="privacy/website/">網站隱私說明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <span>&copy; 2026 Kenny Studio</span>
+                <span>臺灣臺北 · 一人工作室</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
