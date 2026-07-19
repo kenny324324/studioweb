@@ -253,7 +253,7 @@ a:hover { text-decoration-thickness: 2px; }
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in srgb, var(--canvas) 96%, transparent);
+    background: var(--canvas);
   }
   .site-header .header-inner {
     flex-direction: row;
@@ -723,6 +723,19 @@ a.chip { transition: border-color var(--duration-control) var(--ease-out-strong)
   padding: var(--space-4) var(--space-6);
   font-size: var(--text-body-sm);
   color: var(--text-primary);
+}
+
+/* ---------- 跨頁轉場 ----------
+   MPA View Transitions：支援的瀏覽器（Chrome/Edge 126+、Safari 18.2+）
+   在頁面切換與返回時淡入淡出；不支援的瀏覽器維持一般跳轉。 */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-content);
+  animation-timing-function: var(--ease-out-strong);
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
 }
 
 /* ---------- Accessibility preferences ---------- */
