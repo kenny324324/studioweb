@@ -50,4 +50,34 @@
   }
 
   document.querySelectorAll('.rail').forEach(initRail);
+
+  /* 一次性區塊進場：第一次進入視窗時淡入上移，之後移除標記、不重播。
+     reduced motion 或不支援 IntersectionObserver 時完全不啟用。 */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      'IntersectionObserver' in window) {
+    var targets = document.querySelectorAll(
+      '.section-head, .product-card, .feature, .trust-item, .final-cta'
+    );
+    var byParent = new Map();
+    targets.forEach(function (el) {
+      var i = byParent.get(el.parentElement) || 0;
+      byParent.set(el.parentElement, i + 1);
+      el.style.setProperty('--reveal-delay', Math.min(i * 40, 120) + 'ms');
+      el.setAttribute('data-reveal', '');
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        io.unobserve(el);
+        el.classList.add('is-revealed');
+        setTimeout(function () {
+          el.removeAttribute('data-reveal');
+          el.classList.remove('is-revealed');
+          el.style.removeProperty('--reveal-delay');
+        }, 600);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+    targets.forEach(function (el) { io.observe(el); });
+  }
 })();

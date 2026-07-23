@@ -790,6 +790,43 @@ a.chip { transition: border-color var(--duration-control) var(--ease-out-strong)
   color: var(--text-primary);
 }
 
+/* ---------- 一次性區塊進場（由 site.js 標記；無 JS 或 reduced motion 時完全靜態） ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--duration-section) var(--ease-out-strong),
+                transform var(--duration-section) var(--ease-out-strong);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal].is-revealed { opacity: 1; transform: none; }
+}
+
+/* ---------- 卡片微互動（僅 fine pointer） ---------- */
+.product-card, .feature, .trust-item {
+  transition: transform var(--duration-control) var(--ease-out-strong),
+              box-shadow var(--duration-control) var(--ease-out-strong),
+              border-color var(--duration-control) var(--ease-out-strong);
+}
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover, .feature:hover, .trust-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    border-color: color-mix(in srgb, var(--border-strong) 45%, var(--divider));
+  }
+}
+
+/* ---------- App icon 跨頁接力（cross-document shared element） ---------- */
+.vt-app-mish   { view-transition-name: app-icon-mish; }
+.vt-app-pickup { view-transition-name: app-icon-pickup; }
+.vt-app-toilet { view-transition-name: app-icon-toilet; }
+::view-transition-group(app-icon-mish),
+::view-transition-group(app-icon-pickup),
+::view-transition-group(app-icon-toilet) {
+  animation-duration: var(--duration-section);
+  animation-timing-function: var(--ease-in-out);
+}
+
 /* ---------- 跨頁轉場 ----------
    MPA View Transitions：支援的瀏覽器（Chrome/Edge 126+、Safari 18.2+）
    在頁面切換與返回時淡入淡出；不支援的瀏覽器維持一般跳轉。 */
