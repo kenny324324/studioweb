@@ -1,0 +1,92 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+<Base title="網站隱私說明 — Kenny Studio" description="Kenny Studio 官方網站的資料處理說明：GitHub Pages 伺服器紀錄、Google AdSense、第三方資源（Google Fonts、地圖圖資）與聯絡資料的處理方式。" mainClass="section" backClass="container-reading">
+  <Fragment slot="head">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/privacy/website/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="網站隱私說明 — Kenny Studio">
+    <meta property="og:description" content="本網站的資料處理：伺服器紀錄、廣告與第三方資源。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/privacy/website/">
+    <meta property="og:locale" content="zh_TW">
+  </Fragment>
+  <div class="container-reading">
+    <article class="prose">
+      <h1>網站隱私說明</h1>
+      <p class="page-meta"><a href="/studioweb/privacy/">← 隱私政策總覽</a> · 更新日期：2026-07-19</p>
+
+      <p>本頁說明 Kenny Studio 官方網站（<a href="https://kenny324324.github.io/studioweb/">kenny324324.github.io/studioweb</a>，含 Guide 文章、找廁所網頁版地圖與地區頁）處理資料的方式。各 iOS App 的資料處理不在本頁範圍，請見<a href="/studioweb/privacy/">各產品的隱私政策</a>。</p>
+
+      <h2>1. 本網站自身不蒐集個人資料</h2>
+      <p>本網站是純靜態網頁：沒有帳號系統、不要求你註冊或填寫個人資料，網站程式本身也不寫入任何 Cookie 或瀏覽器儲存（local storage）。</p>
+
+      <h2>2. 伺服器與第三方資源</h2>
+      <p>瀏覽本網站時，你的瀏覽器會向下列服務發出請求；這些服務會依其自身政策收到你的 IP 位址、瀏覽器資訊等技術性資料：</p>
+      <ul>
+        <li><strong>GitHub Pages：</strong>本網站的主機服務，由 GitHub 提供。GitHub 可能記錄一般性的存取紀錄（如 IP 位址），詳見 <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub 隱私聲明</a>。</li>
+        <li><strong>Google Fonts：</strong>網頁地圖與地區頁載入 Google 提供的圖示字型（Material Symbols）。</li>
+        <li><strong>地圖資源：</strong>找廁所網頁版地圖使用 OpenStreetMap 圖資與 unpkg CDN 提供的開源地圖程式庫（Leaflet）。</li>
+      </ul>
+
+      <h2>3. Google AdSense 廣告</h2>
+      <p>本網站部分內容頁面載入 Google AdSense 程式碼。當廣告實際投放時，Google 與其合作夥伴可能使用 Cookie、web beacon、IP 位址或裝置識別資料，依你造訪本網站與其他網站的紀錄投放相關廣告：</p>
+      <ul>
+        <li>你可以在 <a href="https://adssettings.google.com/" rel="noopener">Google 廣告設定</a>管理或關閉個人化廣告。</li>
+        <li>Google 如何使用來自本網站的資料，見 <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">Google 的說明頁面</a>。</li>
+        <li>如適用法規要求同意機制（如歐洲經濟區），將依 Google AdSense 的 Privacy &amp; messaging 設定顯示同意訊息。</li>
+      </ul>
+      <p>本網站目前未使用 Google Analytics 或其他流量分析工具。</p>
+
+      <h2>4. Email 聯絡</h2>
+      <p>如果你透過 Email 與我們聯絡，通訊內容會保留至事項處理完畢後約 12 個月，除非法律另有要求。我們不會將你的 Email 用於行銷或提供給第三方。</p>
+
+      <h2>5. 你的權利</h2>
+      <p>在適用的個資法規（含臺灣個人資料保護法）下，你可以就我們實際持有的個人資料（主要是 Email 通訊）行使查詢、更正、停止利用與刪除等權利。請來信 <a href="mailto:kenny4work324@gmail.com?subject=%5B%E9%9A%B1%E7%A7%81%5D%20%E5%80%8B%E8%B3%87%E4%BA%8B%E9%A0%85">kenny4work324@gmail.com</a>，我們會在 30 天內回覆。</p>
+
+      <h2>6. 政策變更</h2>
+      <p>網站功能或使用的第三方服務改變時，我們會更新本頁並調整頁首的更新日期。</p>
+    </article>
+  </div>
+  <Fragment slot="footer">
+    <footer class="site-footer">
+      <div class="container-shell">
+        <div class="footer-grid">
+          <div class="footer-group">
+            <h2>Products</h2>
+            <ul>
+              <li><a href="/studioweb/mish/">Mish 讀書筆記</a></li>
+              <li><a href="/studioweb/packagetracker/">取貨吧 包裹追蹤</a></li>
+              <li><a href="/studioweb/findtoilet/">找廁所 公廁地圖</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Privacy</h2>
+            <ul>
+              <li><a href="/studioweb/privacy/">隱私政策總覽</a></li>
+              <li><a href="/studioweb/privacy/mish/">Mish</a></li>
+              <li><a href="/studioweb/privacy/pickup/">取貨吧</a></li>
+              <li><a href="/studioweb/privacy/find-toilet/">找廁所</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Studio</h2>
+            <ul>
+              <li><a href="/studioweb/about/">關於 Kenny Studio</a></li>
+              <li><a href="/studioweb/contact/">聯絡與支援</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Guide</h2>
+            <ul>
+              <li><a href="/studioweb/guide/">全部文章</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>&copy; 2026 Kenny Studio</span>
+          <span>臺灣臺北 · 一人工作室</span>
+        </div>
+      </div>
+    </footer>
+  </Fragment>
+</Base>

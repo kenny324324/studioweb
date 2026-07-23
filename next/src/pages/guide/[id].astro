@@ -1,0 +1,47 @@
+---
+import Base from "../../layouts/Base.astro";
+import GuideFooter from "../../components/GuideFooter.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("guide");
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const canonical = `https://kenny324324.github.io/studioweb/guide/${post.id}/`;
+const categorySuffix = post.data.category === "dev" ? " · 開發札記" : "";
+---
+<Base title={`${post.data.title}｜Kenny Studio Guide`} description={post.data.description}
+      current="guide" mainClass="section" backClass="container-reading">
+  <Fragment slot="head">
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={post.data.title} />
+    <meta property="og:description" content={post.data.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="zh_TW" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.data.title,
+      "description": post.data.description,
+      "datePublished": post.data.date,
+      "author": { "@type": "Person", "name": post.data.author },
+      "publisher": { "@type": "Organization", "name": "Kenny Studio" }
+    })} />
+  </Fragment>
+
+  <div class="container-reading">
+    <article class="prose">
+      <p class="page-meta"><a href="/studioweb/guide/">← Guide</a> · {post.data.author} · {post.data.date} · {post.data.readMin} min read{categorySuffix}</p>
+      <h1>{post.data.title}</h1>
+      <Content />
+    </article>
+  </div>
+
+  <script is:inline src="/studioweb/assets/ads-config.js" defer></script>
+  <script is:inline src="/studioweb/assets/ads.js" defer></script>
+  <Fragment slot="footer"><GuideFooter /></Fragment>
+</Base>

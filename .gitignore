@@ -13,3 +13,6 @@ Files/
 
 # 本機工具設定
 .claude/
+
+# 視覺方向試作（僅本機預覽）
+preview-*.html

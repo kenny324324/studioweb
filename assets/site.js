@@ -80,4 +80,57 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
     targets.forEach(function (el) { io.observe(el); });
   }
+
+  /* 首頁導覽底線跟隨:捲到 #apps 區塊時,aria-current 從 Home 移到 Apps；
+     捲回上方時還原。其他頁面沒有 #apps,整段不啟用。 */
+  var appsSection = document.getElementById('apps');
+  var navLinks = document.querySelectorAll('.site-nav a');
+  if (appsSection && navLinks.length) {
+    var appsLink = null;
+    var homeLink = null;
+    navLinks.forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('#apps') !== -1) appsLink = a;
+      else if (a.getAttribute('aria-current') === 'page') homeLink = a;
+    });
+    if (appsLink && homeLink) {
+      var navTicking = false;
+      var updateNav = function () {
+        var rect = appsSection.getBoundingClientRect();
+        var mark = window.innerHeight * 0.4;
+        var inApps = rect.top <= mark && rect.bottom > mark;
+        if (inApps) {
+          appsLink.setAttribute('aria-current', 'page');
+          homeLink.removeAttribute('aria-current');
+        } else {
+          homeLink.setAttribute('aria-current', 'page');
+          appsLink.removeAttribute('aria-current');
+        }
+      };
+      var onScroll = function () {
+        if (navTicking) return;
+        navTicking = true;
+        requestAnimationFrame(function () { updateNav(); navTicking = false; });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      updateNav();
+    }
+  }
+
+  /* 返回上一頁:有同源瀏覽紀錄時走 history.back(),
+     直接空降（無紀錄或從站外來）則照 href 回首頁。 */
+  document.querySelectorAll('a[data-back]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var sameOrigin = false;
+      try {
+        sameOrigin = !!document.referrer &&
+          new URL(document.referrer).origin === window.location.origin;
+      } catch (err) { /* referrer 不可解析就走 fallback */ }
+      if (window.history.length > 1 && sameOrigin) {
+        e.preventDefault();
+        window.history.back();
+      }
+    });
+  });
 })();

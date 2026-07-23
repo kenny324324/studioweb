@@ -1,0 +1,100 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+<Base title="隱私政策總覽 — Kenny Studio" description="Kenny Studio 網站與旗下 App（Mish、取貨吧、找廁所）的隱私政策入口。每個產品的資料處理方式各自獨立說明。" mainClass="section">
+  <Fragment slot="head">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/privacy/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="隱私政策總覽 — Kenny Studio">
+    <meta property="og:description" content="網站與各 App 的資料處理方式，各自獨立說明。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/privacy/">
+    <meta property="og:locale" content="zh_TW">
+  </Fragment>
+  <div class="container-content">
+    <div class="prose">
+      <h1>隱私政策總覽</h1>
+      <p class="page-meta">Privacy · 網站與各 App 分開說明</p>
+      <p>Kenny Studio 的每個產品性質不同，資料處理方式也不同，因此不使用一份共用政策概括所有產品。請依你使用的服務查看對應的政策：</p>
+    </div>
+
+    <div class="product-grid" style="margin-top: var(--space-8);">
+      <article class="product-card">
+        <h2 style="font-size: var(--text-h3);">本網站</h2>
+        <p class="product-desc">Kenny Studio 官方網站（含 Guide 文章與找廁所網頁地圖）的資料處理：第三方資源、廣告與伺服器紀錄。</p>
+        <div class="product-links">
+          <a class="action-link" href="/studioweb/privacy/website/">網站隱私說明</a>
+        </div>
+      </article>
+      <article class="product-card">
+        <h2 style="font-size: var(--text-h3);">Mish</h2>
+        <p class="product-desc">讀書筆記與閱讀紀錄 App。含帳號、雲端同步、分析與廣告的資料處理。</p>
+        <p class="product-desc">政策更新日：2026-07-15</p>
+        <div class="product-links">
+          <a class="action-link" href="/studioweb/privacy/mish/">Mish 隱私政策</a>
+        </div>
+      </article>
+      <article class="product-card">
+        <h2 style="font-size: var(--text-h3);">取貨吧</h2>
+        <p class="product-desc">包裹追蹤 App。含 Apple 登入、包裹資料、AI 截圖辨識與雲端同步的資料處理。</p>
+        <p class="product-desc">政策更新日：2026-07-02</p>
+        <div class="product-links">
+          <a class="action-link" href="/studioweb/privacy/pickup/">取貨吧隱私政策</a>
+        </div>
+      </article>
+      <article class="product-card">
+        <h2 style="font-size: var(--text-h3);">找廁所</h2>
+        <p class="product-desc">公廁地圖 App。定位僅在裝置上即時使用的資料處理說明。</p>
+        <p class="product-desc">政策更新日：2025-09-16</p>
+        <div class="product-links">
+          <a class="action-link" href="/studioweb/privacy/find-toilet/">找廁所隱私政策</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="prose" style="margin-top: var(--space-12);">
+      <p>任何隱私相關問題或個資權利行使（查詢、更正、刪除），請來信 <a href="mailto:kenny4work324@gmail.com?subject=%5B%E9%9A%B1%E7%A7%81%5D%20%E5%80%8B%E8%B3%87%E4%BA%8B%E9%A0%85">kenny4work324@gmail.com</a>，我們會在 30 天內回覆。</p>
+    </div>
+  </div>
+  <Fragment slot="footer">
+    <footer class="site-footer">
+      <div class="container-shell">
+        <div class="footer-grid">
+          <div class="footer-group">
+            <h2>Products</h2>
+            <ul>
+              <li><a href="/studioweb/mish/">Mish 讀書筆記</a></li>
+              <li><a href="/studioweb/packagetracker/">取貨吧 包裹追蹤</a></li>
+              <li><a href="/studioweb/findtoilet/">找廁所 公廁地圖</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Privacy</h2>
+            <ul>
+              <li><a href="/studioweb/privacy/website/">網站隱私說明</a></li>
+              <li><a href="/studioweb/privacy/mish/">Mish</a></li>
+              <li><a href="/studioweb/privacy/pickup/">取貨吧</a></li>
+              <li><a href="/studioweb/privacy/find-toilet/">找廁所</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Studio</h2>
+            <ul>
+              <li><a href="/studioweb/about/">關於 Kenny Studio</a></li>
+              <li><a href="/studioweb/contact/">聯絡與支援</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Guide</h2>
+            <ul>
+              <li><a href="/studioweb/guide/">全部文章</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>&copy; 2026 Kenny Studio</span>
+          <span>臺灣臺北 · 一人工作室</span>
+        </div>
+      </div>
+    </footer>
+  </Fragment>
+</Base>

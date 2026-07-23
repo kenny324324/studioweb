@@ -1,0 +1,79 @@
+---
+import Base from "../../layouts/Base.astro";
+import GuideFooter from "../../components/GuideFooter.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("guide");
+// 沿用舊站的編輯排序（同日期文章有固定順序）
+const ORDER = [
+  "taipei-station-toilet",
+  "kids-family-toilet",
+  "accessible-toilet",
+  "toilet-rating-system",
+  "package-tracking-integration",
+  "solo-dev-first-year",
+];
+const byOrder = (a: any, b: any) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id);
+const toilet = posts.filter((p) => p.data.category === "toilet").sort(byOrder);
+const dev = posts.filter((p) => p.data.category === "dev").sort(byOrder);
+---
+<Base title="Guide — Kenny Studio 開發札記與實用攻略"
+      description="Kenny Studio 的公開文章集合：公共廁所使用攻略、無障礙與親子設施指南、以及獨立 App 開發者的工程與商業札記。"
+      current="guide" mainClass="section">
+  <Fragment slot="head">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/guide/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Guide — Kenny Studio 開發札記與實用攻略" />
+    <meta property="og:description" content="公共廁所使用攻略、無障礙設施、親子友善、獨立開發札記。" />
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/guide/" />
+    <meta property="og:locale" content="zh_TW" />
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Kenny Studio Guide",
+        "url": "https://kenny324324.github.io/studioweb/guide/",
+        "publisher": { "@type": "Organization", "name": "Kenny Studio" }
+    }
+    </script>
+  </Fragment>
+
+  <div class="container-content">
+    <div class="prose">
+      <h1>Guide</h1>
+      <p class="page-meta">開發札記 &amp; 實用攻略 · 2026 –</p>
+      <p>這裡是 Kenny Studio 的公開文章集合。內容分兩類：一是圍繞我們 App 領域（公共廁所、包裹追蹤）寫的實用攻略，二是獨立 App 開發過程的工程與商業札記。寫作原則簡單：只寫自己真正做過、查證過的內容，不湊字數、不做內容農場。</p>
+    </div>
+
+    <h2 style="font-size: var(--text-h2); margin-top: var(--space-12); margin-bottom: var(--space-2);">公共廁所與友善設施</h2>
+    <p style="color: var(--text-secondary); margin-bottom: var(--space-2);">相關產品：<a href="/studioweb/findtoilet/">找廁所</a> · <a href="/studioweb/findtoilet/map/">網頁版地圖</a></p>
+    <ul class="post-list">
+      {toilet.map((p) => (
+        <li>
+          <a href={`/studioweb/guide/${p.id}/`} class="post-title">{p.data.title}</a>
+          <p class="post-excerpt">{p.data.excerpt}</p>
+          <p class="post-meta">{p.data.author} · {p.data.date} · {p.data.readMin} min read</p>
+        </li>
+      ))}
+    </ul>
+
+    <h2 style="font-size: var(--text-h2); margin-top: var(--space-12); margin-bottom: var(--space-2);">獨立開發札記</h2>
+    <p style="color: var(--text-secondary); margin-bottom: var(--space-2);">相關產品：<a href="/studioweb/packagetracker/">取貨吧</a> · <a href="/studioweb/mish/">Mish</a></p>
+    <ul class="post-list">
+      {dev.map((p) => (
+        <li>
+          <a href={`/studioweb/guide/${p.id}/`} class="post-title">{p.data.title}</a>
+          <p class="post-excerpt">{p.data.excerpt}</p>
+          <p class="post-meta">{p.data.author} · {p.data.date} · {p.data.readMin} min read</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="prose" style="margin-top: var(--space-12);">
+      <h2>關於這個 Guide</h2>
+      <p>每一篇文章都花了至少 4–6 小時撰寫、編輯與查證。我不是專職編輯，內容偶有筆誤在所難免，發現錯字或事實錯誤歡迎<a href="/studioweb/contact/">來信告訴我</a>，會盡快修正。</p>
+      <p>文章在本頁永久可讀，不會因為時間久了被移走。如果你覺得某篇對你有幫助，歡迎分享給需要的朋友。</p>
+    </div>
+  </div>
+  <Fragment slot="footer"><GuideFooter /></Fragment>
+</Base>

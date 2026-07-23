@@ -1,0 +1,393 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="取貨吧 Pickup — 所有包裹，一處掌握｜21 家物流追蹤 iOS App｜Kenny Studio" description="取貨吧整合超商取貨、國內宅配與國際快遞共 21 家物流的貨態追蹤。AI 截圖辨識單號、到貨與取貨提醒、桌面小工具、跨裝置同步。免費下載 iOS App。" theme="pickup" current="apps">
+  <Fragment slot="head">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/packagetracker/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="取貨吧 — 所有包裹，一處掌握">
+    <meta property="og:description" content="超商、宅配與國際快遞整合追蹤。AI 截圖辨識單號，到貨與取貨提醒。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/packagetracker/">
+    <meta property="og:site_name" content="Kenny Studio">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://kenny324324.github.io/studioweb/assets/packagetracker/icon-160.png?v=3">
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Pickup 取貨吧｜包裹追蹤・貨態查詢工具",
+        "operatingSystem": "iOS",
+        "applicationCategory": "UtilitiesApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" },
+        "downloadUrl": "https://apps.apple.com/tw/app/id6758759908",
+        "author": { "@type": "Organization", "name": "Kenny Studio" },
+        "description": "整合超商取貨、國內宅配與國際快遞共 21 家物流的包裹追蹤 App，支援 AI 截圖辨識與到貨提醒。"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "取貨吧支援哪些物流商？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "目前支援 21 家物流商：超商取貨（7-ELEVEN 交貨便、全家店到店、萊爾富、蝦皮店到店）、宅配與物流（黑貓宅急便、新竹物流、宅配通、中華郵政、嘉里快遞、東風速運、全球快遞、韻達、Pickupp、便利帶、新航通運）、電商物流（PChome 網家速配、嘉里大榮）、國際快遞（DHL、FedEx、UPS、順豐速運）。支援清單會隨版本更新，以 App 內顯示為準。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "取貨吧是免費的嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "可以免費下載使用，免費方案有同時追蹤的包裹數量上限。升級 Pro 可解鎖更多包裹與進階功能，提供月訂閱、年訂閱與終身買斷三種方案；數量上限與價格以 App 內顯示為準。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "AI 截圖辨識是什麼？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "把訂單確認或取貨通知的截圖交給取貨吧，App 會自動辨識物流單號、物流商與取貨門市，不用手動輸入。也可以在其他 App 直接把截圖分享給取貨吧。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "為什麼需要登入 Apple 帳號？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "取貨吧使用 Apple 登入建立你的包裹清單，讓貨態能在雲端同步、跨裝置一致，也才能在包裹狀態更新時發送推播提醒。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "會提醒我取貨嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "會。包裹狀態更新時即時推播，每天早上 10 點（台灣時間）提醒今天可以取的包裹；超商包裹會自動推算取貨期限。提醒可以在設定中個別開關。"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Kenny Studio", "item": "https://kenny324324.github.io/studioweb/" },
+            { "@type": "ListItem", "position": 2, "name": "Pickup 取貨吧｜包裹追蹤・貨態查詢工具", "item": "https://kenny324324.github.io/studioweb/packagetracker/" }
+        ]
+    }
+    </script>
+  </Fragment>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container-content hero-product-grid">
+                <div>
+                <div class="hero-product-head">
+                    <picture>
+                        <source srcset="/studioweb/assets/packagetracker/icon-160.avif?v=3" type="image/avif">
+                        <source srcset="/studioweb/assets/packagetracker/icon-160.webp?v=3" type="image/webp">
+                        <img class="app-icon" src="/studioweb/assets/packagetracker/icon-160.png?v=3" alt="取貨吧 App icon" width="80" height="80" fetchpriority="high">
+                    </picture>
+                    <div>
+                        <p class="eyebrow">Pickup 取貨吧 · 包裹追蹤</p>
+                    </div>
+                </div>
+                <h1>所有包裹，一處掌握</h1>
+                <p class="lede">超商取貨、宅配到府、海外代購——取貨吧把 21 家物流的貨態整合在同一個清單。AI 截圖辨識單號、到貨與取貨提醒、桌面小工具，不再錯過任何一件包裹。</p>
+                <div class="hero-cta">
+                    <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6758759908">在 App Store 下載取貨吧</a>
+                    <a class="action-link" href="#trust">查看隱私與支援</a>
+                </div>
+                <p class="hero-note">免費下載 · 支援 iPhone 與 iPad · 使用 Apple 帳號登入同步</p>
+                </div>
+                <div class="hero-product-visual" aria-hidden="true" data-motion="spatial">
+                    <picture>
+                        <source srcset="/studioweb/assets/packagetracker/sc1-320.avif 320w, /studioweb/assets/packagetracker/sc1-640.avif 640w" sizes="320px" type="image/avif">
+                        <source srcset="/studioweb/assets/packagetracker/sc1-320.webp 320w, /studioweb/assets/packagetracker/sc1-640.webp 640w" sizes="320px" type="image/webp">
+                        <img src="/studioweb/assets/packagetracker/sc1-640.jpg" alt="" width="640" height="1385" loading="lazy" fetchpriority="high">
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots -->
+        <section class="section" aria-label="取貨吧產品畫面">
+            <div class="container-content">
+                <div class="rail" data-motion="spatial">
+                    <div class="rail-track" tabindex="0" role="group" aria-label="取貨吧 App 畫面，可左右捲動">
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/packagetracker/sc1-320.avif 320w, /studioweb/assets/packagetracker/sc1-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/packagetracker/sc1-320.webp 320w, /studioweb/assets/packagetracker/sc1-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/packagetracker/sc1-640.jpg" alt="取貨吧主畫面：所有物流的包裹整合在同一清單" width="640" height="1385" fetchpriority="high">
+                            </picture>
+                            <figcaption>包裹總覽</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/packagetracker/sc2-320.avif 320w, /studioweb/assets/packagetracker/sc2-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/packagetracker/sc2-320.webp 320w, /studioweb/assets/packagetracker/sc2-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/packagetracker/sc2-640.jpg" alt="取貨吧 AI 智慧辨識：截圖自動辨識物流單號" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>AI 截圖辨識</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/packagetracker/sc3-320.avif 320w, /studioweb/assets/packagetracker/sc3-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/packagetracker/sc3-320.webp 320w, /studioweb/assets/packagetracker/sc3-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/packagetracker/sc3-640.jpg" alt="取貨吧貨態追蹤：即時掌握包裹目前狀態" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>貨態追蹤</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/packagetracker/sc4-320.avif 320w, /studioweb/assets/packagetracker/sc4-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/packagetracker/sc4-320.webp 320w, /studioweb/assets/packagetracker/sc4-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/packagetracker/sc4-640.jpg" alt="取貨吧桌面小工具：不開 App 也能看包裹進度" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>桌面小工具</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/packagetracker/sc5-320.avif 320w, /studioweb/assets/packagetracker/sc5-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/packagetracker/sc5-320.webp 320w, /studioweb/assets/packagetracker/sc5-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/packagetracker/sc5-640.jpg" alt="取貨吧多種新增方式：AI 辨識、掃描或手動輸入" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>多種新增方式</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/packagetracker/sc6-320.avif 320w, /studioweb/assets/packagetracker/sc6-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/packagetracker/sc6-320.webp 320w, /studioweb/assets/packagetracker/sc6-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/packagetracker/sc6-640.jpg" alt="取貨吧到貨推播提醒：不再錯過領取包裹" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>到貨提醒</figcaption>
+                        </figure>
+                    </div>
+                    <div class="rail-controls">
+                        <button class="rail-btn" type="button" data-rail-prev aria-label="上一張畫面">&#8592;</button>
+                        <button class="rail-btn" type="button" data-rail-next aria-label="下一張畫面">&#8594;</button>
+                        <span class="rail-status" data-rail-status aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section">
+            <div class="container-content">
+                <div class="section-head">
+                    <p class="eyebrow">核心功能</p>
+                    <h2>從下單到取貨，都有人幫你盯著</h2>
+                </div>
+                <div class="feature-list">
+                    <div class="feature">
+                        <h3>新增包裹，幾秒就好</h3>
+                        <p>選購物平台、選取貨方式，物流商自動帶入；也能用 AI 截圖辨識、條碼掃描或手動輸入，單號格式自動判斷物流商。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>貨態一目瞭然</h3>
+                        <p>從已出貨到抵達門市，狀態即時更新；超商包裹自動推算取貨期限，避免被退回。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>提醒與小工具</h3>
+                        <p>狀態更新即時推播，每天早上 10 點提醒可取貨的包裹。桌面與鎖定畫面小工具、即時動態（Live Activity）隨時看進度。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>跨裝置同步</h3>
+                        <p>使用 Apple 帳號登入，包裹清單與貨態即時同步到你的每一台 iOS 裝置。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carriers -->
+        <section class="section">
+            <div class="container-content">
+                <div class="section-head">
+                    <p class="eyebrow">支援物流</p>
+                    <h2>21 家物流商，持續更新</h2>
+                    <p>實際支援清單會隨版本調整，以 App 內顯示為準。</p>
+                </div>
+                <h3 class="visually-hidden">物流商分類清單</h3>
+                <div class="carrier-groups">
+                    <div>
+                        <h4>超商取貨</h4>
+                        <div class="chip-group">
+                            <span class="chip">7-ELEVEN 交貨便</span>
+                            <span class="chip">全家店到店</span>
+                            <span class="chip">萊爾富</span>
+                            <span class="chip">蝦皮店到店</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>宅配與物流</h4>
+                        <div class="chip-group">
+                            <span class="chip">黑貓宅急便</span>
+                            <span class="chip">新竹物流</span>
+                            <span class="chip">宅配通</span>
+                            <span class="chip">中華郵政</span>
+                            <span class="chip">嘉里快遞</span>
+                            <span class="chip">東風速運</span>
+                            <span class="chip">全球快遞</span>
+                            <span class="chip">韻達</span>
+                            <span class="chip">Pickupp</span>
+                            <span class="chip">便利帶</span>
+                            <span class="chip">新航通運</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>電商物流</h4>
+                        <div class="chip-group">
+                            <span class="chip">PChome 網家速配</span>
+                            <span class="chip">嘉里大榮</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>國際快遞</h4>
+                        <div class="chip-group">
+                            <span class="chip">DHL</span>
+                            <span class="chip">FedEx</span>
+                            <span class="chip">UPS</span>
+                            <span class="chip">順豐速運</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <div class="container-faq">
+                <div class="section-head">
+                    <p class="eyebrow">常見問題</p>
+                    <h2>FAQ</h2>
+                </div>
+                <div class="faq-list">
+                    <details>
+                        <summary>取貨吧支援哪些物流商？</summary>
+                        <div>
+                            <p>目前支援 21 家：超商取貨（7-ELEVEN 交貨便、全家店到店、萊爾富、蝦皮店到店）、宅配與物流（黑貓宅急便、新竹物流、宅配通、中華郵政、嘉里快遞、東風速運、全球快遞、韻達、Pickupp、便利帶、新航通運）、電商物流（PChome 網家速配、嘉里大榮）、國際快遞（DHL、FedEx、UPS、順豐速運）。支援清單會隨版本更新，以 App 內顯示為準。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>取貨吧是免費的嗎？</summary>
+                        <div>
+                            <p>可以免費下載使用，免費方案有同時追蹤的包裹數量上限。升級 Pro 可解鎖更多包裹與進階功能，提供月訂閱、年訂閱與終身買斷三種方案；數量上限與價格以 App 內顯示為準。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>AI 截圖辨識是什麼？</summary>
+                        <div>
+                            <p>把訂單確認或取貨通知的截圖交給取貨吧，App 會自動辨識物流單號、物流商與取貨門市，不用手動輸入。也可以在其他 App 直接把截圖「分享」給取貨吧。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>為什麼需要登入 Apple 帳號？</summary>
+                        <div>
+                            <p>取貨吧使用 Apple 登入建立你的包裹清單，讓貨態能在雲端同步、跨裝置一致，也才能在包裹狀態更新時發送推播提醒。資料處理方式詳見<a href="/studioweb/privacy/pickup/">取貨吧隱私政策</a>。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>會提醒我取貨嗎？</summary>
+                        <div>
+                            <p>會。包裹狀態更新時即時推播，每天早上 10 點（台灣時間）提醒今天可以取的包裹；超商包裹會自動推算取貨期限。提醒可以在設定中個別開關。</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust -->
+        <section class="section" id="trust">
+            <div class="container-content">
+                <div class="section-head">
+                    <p class="eyebrow">信任與支援</p>
+                    <h2>隱私、支援與下載</h2>
+                </div>
+                <div class="trust-list">
+                    <div class="trust-item">
+                        <h3>隱私政策</h3>
+                        <p>取貨吧的資料處理方式（帳號、包裹資料、AI 辨識與同步）寫在專屬隱私政策。<br><a href="/studioweb/privacy/pickup/">查看取貨吧隱私政策</a></p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>支援</h3>
+                        <p>使用問題與建議，來信必回。<br><a href="mailto:kenny4work324@gmail.com?subject=%5B%E5%8F%96%E8%B2%A8%E5%90%A7%5D%20%E4%BD%BF%E7%94%A8%E5%95%8F%E9%A1%8C">寫信給開發者</a></p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>App Store</h3>
+                        <p>正式名稱：Pickup 取貨吧｜包裹追蹤・貨態查詢工具<br><a href="https://apps.apple.com/tw/app/id6758759908">前往 App Store 頁面</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section">
+            <div class="container-content">
+                <div class="final-cta">
+                    <h2>不再漏接任何包裹</h2>
+                    <p>免費下載，支援 iPhone 與 iPad。</p>
+                    <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6758759908">在 App Store 下載取貨吧</a>
+                </div>
+            </div>
+        </section>
+
+  <Fragment slot="footer">
+    <footer class="site-footer">
+        <div class="container-shell">
+            <div class="footer-grid">
+                <div class="footer-group">
+                    <h2>Products</h2>
+                    <ul>
+                        <li><a href="/studioweb/mish/">Mish 讀書筆記</a></li>
+                        <li><a href="/studioweb/packagetracker/" aria-current="page">取貨吧 包裹追蹤</a></li>
+                        <li><a href="/studioweb/findtoilet/">找廁所 公廁地圖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>取貨吧</h2>
+                    <ul>
+                        <li><a href="https://apps.apple.com/tw/app/id6758759908">App Store</a></li>
+                        <li><a href="/studioweb/privacy/pickup/">取貨吧隱私政策</a></li>
+                        <li><a href="/studioweb/contact/">支援與回報</a></li>
+                        <li><a href="/studioweb/guide/package-tracking-integration/">整合 21 家物流的開發札記</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Studio</h2>
+                    <ul>
+                        <li><a href="/studioweb/about/">關於 Kenny Studio</a></li>
+                        <li><a href="/studioweb/guide/">Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Privacy</h2>
+                    <ul>
+                        <li><a href="/studioweb/privacy/">隱私政策總覽</a></li>
+                        <li><a href="/studioweb/privacy/website/">網站隱私說明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <span>&copy; 2026 Kenny Studio</span>
+                <span>臺灣臺北 · 一人工作室</span>
+            </div>
+        </div>
+    </footer>
+  </Fragment>
+</Base>

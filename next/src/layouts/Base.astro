@@ -1,0 +1,104 @@
+---
+import "../styles/global.css";
+import "../styles/site.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  theme?: string;          // data-theme: mish | pickup | toilet
+  current?: string;        // home | apps | guide | about | support
+  mainClass?: string;      // 舊站部分頁面 main 帶 class="section"
+  backClass?: string;      // 返回列容器,對齊該頁內容欄(預設 container-content)
+}
+const { title, description, theme, current, mainClass, backClass = "container-content" } = Astro.props;
+const nav = [
+  { key: "home", href: "/studioweb/", label: "Home" },
+  { key: "apps", href: "/studioweb/#apps", label: "Apps" },
+  { key: "guide", href: "/studioweb/guide/", label: "Guide" },
+  { key: "about", href: "/studioweb/about/", label: "About" },
+  { key: "support", href: "/studioweb/contact/", label: "Support" },
+];
+---
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme={theme}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  {description && <meta name="description" content={description} />}
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="/studioweb/assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="/studioweb/assets/logo-192.png" />
+  <link rel="stylesheet" href="/studioweb/assets/fonts/kenny-sans.css" />
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要內容</a>
+
+  <header class="site-header">
+    <div class="container-shell header-inner">
+      <a href="/studioweb/" class="brand">Kenny Studio</a>
+      <nav class="site-nav" aria-label="主要導覽">
+        {nav.map((n) => (
+          <a href={n.href} aria-current={current === n.key ? "page" : undefined}>{n.label}</a>
+        ))}
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class={mainClass}>
+    {current !== "home" && (
+      <div class={`${backClass} back-row`}>
+        <a class="back-link" href="/studioweb/" data-back>返回上一頁</a>
+      </div>
+    )}
+    <slot />
+  </main>
+
+  <slot name="footer">
+    <footer class="site-footer">
+      <div class="container-shell">
+        <div class="footer-grid">
+          <div class="footer-group">
+            <h2>Products</h2>
+            <ul>
+              <li><a href="/studioweb/mish/">Mish 讀書筆記</a></li>
+              <li><a href="/studioweb/packagetracker/">取貨吧 包裹追蹤</a></li>
+              <li><a href="/studioweb/findtoilet/">找廁所 公廁地圖</a></li>
+              <li><a href="/studioweb/findtoilet/map/">找廁所 網頁版地圖</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Guide</h2>
+            <ul>
+              <li><a href="/studioweb/guide/">全部文章</a></li>
+              <li><a href="/studioweb/guide/taipei-station-toilet/">台北車站找廁所攻略</a></li>
+              <li><a href="/studioweb/guide/solo-dev-first-year/">獨立開發一年心得</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Studio</h2>
+            <ul>
+              <li><a href="/studioweb/about/">關於 Kenny Studio</a></li>
+              <li><a href="/studioweb/contact/">聯絡與支援</a></li>
+            </ul>
+          </div>
+          <div class="footer-group">
+            <h2>Privacy</h2>
+            <ul>
+              <li><a href="/studioweb/privacy/">隱私政策總覽</a></li>
+              <li><a href="/studioweb/privacy/website/">網站隱私說明</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>&copy; 2026 Kenny Studio</span>
+          <span>臺灣臺北 · 一人工作室</span>
+        </div>
+      </div>
+    </footer>
+  </slot>
+
+  <script is:inline src="/studioweb/assets/site.js?v=4" defer></script>
+</body>
+</html>

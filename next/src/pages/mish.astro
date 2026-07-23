@@ -1,0 +1,292 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="Mish 讀書筆記與閱讀紀錄 — 安靜陪你讀完每一本書｜Kenny Studio" description="Mish 是為閱讀設計的 iOS App：書櫃與書單管理、專注計時、讀書筆記與閱讀統計。不用註冊也能開始，登入後跨裝置同步。免費下載。" theme="mish" current="apps">
+  <Fragment slot="head">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/mish/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mish — 安靜陪你讀完每一本書">
+    <meta property="og:description" content="書櫃與書單、專注計時、讀書筆記與閱讀統計。不用註冊也能開始。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/mish/">
+    <meta property="og:site_name" content="Kenny Studio">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://kenny324324.github.io/studioweb/assets/mish/icon-160.png?v=3">
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Mish｜讀書筆記與閱讀紀錄",
+        "operatingSystem": "iOS",
+        "applicationCategory": "LifestyleApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" },
+        "downloadUrl": "https://apps.apple.com/tw/app/id6749848120",
+        "author": { "@type": "Organization", "name": "Kenny Studio" },
+        "description": "為閱讀設計的 iOS App：書櫃與書單管理、專注計時、讀書筆記與閱讀統計。"
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Kenny Studio", "item": "https://kenny324324.github.io/studioweb/" },
+            { "@type": "ListItem", "position": 2, "name": "Mish｜讀書筆記與閱讀紀錄", "item": "https://kenny324324.github.io/studioweb/mish/" }
+        ]
+    }
+    </script>
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="hero">
+      <div class="container-content hero-product-grid">
+          <div>
+          <div class="hero-product-head">
+              <picture>
+                  <source srcset="/studioweb/assets/mish/icon-160.avif?v=3" type="image/avif">
+                  <source srcset="/studioweb/assets/mish/icon-160.webp?v=3" type="image/webp">
+                  <img class="app-icon" src="/studioweb/assets/mish/icon-160.png?v=3" alt="Mish App icon" width="80" height="80" fetchpriority="high">
+              </picture>
+              <div>
+                  <p class="eyebrow">Mish · 讀書筆記與閱讀紀錄</p>
+              </div>
+          </div>
+          <h1>不催你、不評判，安靜陪你讀完每一本書</h1>
+          <p class="lede">Mish 把書櫃、書單、專注計時、筆記與統計放在同一個安靜的地方。你讀多快、讀多少，都由你決定——Mish 只負責幫你記得。</p>
+          <div class="hero-cta">
+              <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6749848120">在 App Store 下載 Mish</a>
+              <a class="action-link" href="#trust">查看隱私與支援</a>
+          </div>
+          <p class="hero-note">免費下載 · iOS · 不用註冊也能開始</p>
+          </div>
+          <div class="hero-product-visual" aria-hidden="true" data-motion="spatial">
+              <picture>
+                  <source srcset="/studioweb/assets/mish/sc1-320.avif 320w, /studioweb/assets/mish/sc1-640.avif 640w" sizes="320px" type="image/avif">
+                  <source srcset="/studioweb/assets/mish/sc1-320.webp 320w, /studioweb/assets/mish/sc1-640.webp 640w" sizes="320px" type="image/webp">
+                  <img src="/studioweb/assets/mish/sc1-640.jpg" alt="" width="640" height="1385" loading="lazy" fetchpriority="high">
+              </picture>
+          </div>
+      </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="section" aria-label="Mish 產品畫面">
+      <div class="container-content">
+          <div class="rail" data-motion="spatial">
+              <div class="rail-track" tabindex="0" role="group" aria-label="Mish App 畫面，可左右捲動">
+                  <figure class="rail-slide">
+                      <picture>
+                          <source type="image/avif" srcset="/studioweb/assets/mish/sc1-320.avif 320w, /studioweb/assets/mish/sc1-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <source type="image/webp" srcset="/studioweb/assets/mish/sc1-320.webp 320w, /studioweb/assets/mish/sc1-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <img src="/studioweb/assets/mish/sc1-640.jpg" alt="Mish 書櫃畫面：閱讀中、待讀與全部書籍分頁" width="640" height="1385" fetchpriority="high">
+                      </picture>
+                      <figcaption>專屬書櫃</figcaption>
+                  </figure>
+                  <figure class="rail-slide">
+                      <picture>
+                          <source type="image/avif" srcset="/studioweb/assets/mish/sc4-320.avif 320w, /studioweb/assets/mish/sc4-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <source type="image/webp" srcset="/studioweb/assets/mish/sc4-320.webp 320w, /studioweb/assets/mish/sc4-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <img src="/studioweb/assets/mish/sc4-640.jpg" alt="Mish 專注番茄鐘畫面：25 分鐘倒數計時" width="640" height="1385" loading="lazy">
+                      </picture>
+                      <figcaption>專注計時</figcaption>
+                  </figure>
+                  <figure class="rail-slide">
+                      <picture>
+                          <source type="image/avif" srcset="/studioweb/assets/mish/sc7-320.avif 320w, /studioweb/assets/mish/sc7-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <source type="image/webp" srcset="/studioweb/assets/mish/sc7-320.webp 320w, /studioweb/assets/mish/sc7-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <img src="/studioweb/assets/mish/sc7-640.jpg" alt="Mish 讀書筆記畫面：筆記依頁碼整理在書本下" width="640" height="1385" loading="lazy">
+                      </picture>
+                      <figcaption>讀書筆記</figcaption>
+                  </figure>
+                  <figure class="rail-slide">
+                      <picture>
+                          <source type="image/avif" srcset="/studioweb/assets/mish/sc6-320.avif 320w, /studioweb/assets/mish/sc6-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <source type="image/webp" srcset="/studioweb/assets/mish/sc6-320.webp 320w, /studioweb/assets/mish/sc6-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <img src="/studioweb/assets/mish/sc6-640.jpg" alt="Mish 閱讀總覽畫面：書櫃統計、完成率與成就" width="640" height="1385" loading="lazy">
+                      </picture>
+                      <figcaption>閱讀統計</figcaption>
+                  </figure>
+                  <figure class="rail-slide">
+                      <picture>
+                          <source type="image/avif" srcset="/studioweb/assets/mish/sc5-320.avif 320w, /studioweb/assets/mish/sc5-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <source type="image/webp" srcset="/studioweb/assets/mish/sc5-320.webp 320w, /studioweb/assets/mish/sc5-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <img src="/studioweb/assets/mish/sc5-640.jpg" alt="Mish 為你推薦畫面：依書櫃推薦分類新書與常讀作者" width="640" height="1385" loading="lazy">
+                      </picture>
+                      <figcaption>發現新書</figcaption>
+                  </figure>
+                  <figure class="rail-slide">
+                      <picture>
+                          <source type="image/avif" srcset="/studioweb/assets/mish/sc3-320.avif 320w, /studioweb/assets/mish/sc3-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <source type="image/webp" srcset="/studioweb/assets/mish/sc3-320.webp 320w, /studioweb/assets/mish/sc3-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                          <img src="/studioweb/assets/mish/sc3-640.jpg" alt="Mish 搜尋書籍畫面：輸入書名一鍵加入書架" width="640" height="1385" loading="lazy">
+                      </picture>
+                      <figcaption>快速加書</figcaption>
+                  </figure>
+              </div>
+              <div class="rail-controls">
+                  <button class="rail-btn" type="button" data-rail-prev aria-label="上一張畫面">&#8592;</button>
+                  <button class="rail-btn" type="button" data-rail-next aria-label="下一張畫面">&#8594;</button>
+                  <span class="rail-status" data-rail-status aria-hidden="true"></span>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+      <div class="container-content">
+          <div class="section-head">
+              <p class="eyebrow">核心功能</p>
+              <h2>閱讀生活需要的，都在同一個地方</h2>
+          </div>
+          <div class="feature-list">
+              <div class="feature">
+                  <h3>書櫃隨你的節奏整理</h3>
+                  <p>閱讀中、待讀、已完成，加上還沒入手的想讀清單。搜尋書名或 ISBN 一鍵加入，支援臺灣與日文書目資料。</p>
+              </div>
+              <div class="feature">
+                  <h3>為閱讀設計的專注計時</h3>
+                  <p>番茄鐘與累積閱讀時間，幫你看見自己的閱讀節奏——是節奏，不是 KPI。</p>
+              </div>
+              <div class="feature">
+                  <h3>筆記留在書本旁邊</h3>
+                  <p>每一則筆記都掛在對應的書與頁碼下，回顧時想法與出處都在。</p>
+              </div>
+              <div class="feature">
+                  <h3>發現下一本想讀的書</h3>
+                  <p>依你的書櫃推薦分類新書與常讀作者；每本書提供對應地區書店的購書連結，找不到的書也能直接回報給我們。</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- 真實界線 -->
+  <section class="section">
+      <div class="container-content">
+          <div class="section-head">
+              <p class="eyebrow">使用方式</p>
+              <h2>不用註冊也能開始</h2>
+              <p>打開 Mish 就能直接建立書櫃，先試用再決定。登入帳號（Email、Google 或 Apple）後，書櫃、筆記與紀錄會同步到雲端，換裝置也不會不見。免費版與 Mish Pro 的功能差異與方案價格，以 App 內顯示為準。</p>
+          </div>
+      </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+      <div class="container-faq">
+          <div class="section-head">
+              <p class="eyebrow">常見問題</p>
+              <h2>FAQ</h2>
+          </div>
+          <div class="faq-list">
+              <details>
+                  <summary>Mish 是免費的嗎？</summary>
+                  <div>
+                      <p>可以免費下載並使用核心功能。部分進階功能（例如進階統計、閱讀目標、匯出）屬於 Mish Pro，方案與價格以 App 內顯示為準。免費版會顯示少量廣告，Pro 版移除廣告。</p>
+                  </div>
+              </details>
+              <details>
+                  <summary>一定要註冊帳號嗎？</summary>
+                  <div>
+                      <p>不用。訪客模式就能開始建立書櫃。登入後（支援 Email、Google 與 Apple 登入）資料會同步到雲端，可跨裝置使用；原本訪客建立的書也會合併到帳號。</p>
+                  </div>
+              </details>
+              <details>
+                  <summary>書的資料從哪裡來？找不到書怎麼辦？</summary>
+                  <div>
+                      <p>書目資料來自公開書目資料庫搜尋，支援書名與 ISBN，並包含日文書目來源。找不到的書可以直接在 App 內回報書名與 ISBN，我們會處理。</p>
+                  </div>
+              </details>
+              <details>
+                  <summary>我的筆記和閱讀紀錄會被公開嗎？</summary>
+                  <div>
+                      <p>不會。筆記與閱讀紀錄屬於你自己；只有你主動選擇分享的書評才會公開給其他讀者。詳細的資料處理方式請見 <a href="/studioweb/privacy/mish/">Mish 隱私政策</a>。</p>
+                  </div>
+              </details>
+          </div>
+      </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="section" id="trust">
+      <div class="container-content">
+          <div class="section-head">
+              <p class="eyebrow">信任與支援</p>
+              <h2>隱私、支援與下載</h2>
+          </div>
+          <div class="trust-list">
+              <div class="trust-item">
+                  <h3>隱私政策</h3>
+                  <p>Mish 的資料處理方式（帳號、同步、分析與廣告）寫在專屬隱私政策。<br><a href="/studioweb/privacy/mish/">查看 Mish 隱私政策</a></p>
+              </div>
+              <div class="trust-item">
+                  <h3>支援</h3>
+                  <p>使用問題與建議，來信必回。<br><a href="mailto:kenny4work324@gmail.com?subject=%5BMish%5D%20%E4%BD%BF%E7%94%A8%E5%95%8F%E9%A1%8C">寫信給開發者</a></p>
+              </div>
+              <div class="trust-item">
+                  <h3>App Store</h3>
+                  <p>正式名稱：Mish｜讀書筆記與閱讀紀錄<br><a href="https://apps.apple.com/tw/app/id6749848120">前往 App Store 頁面</a></p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section">
+      <div class="container-content">
+          <div class="final-cta">
+              <h2>從下一本書開始</h2>
+              <p>免費下載，不用註冊也能開始。</p>
+              <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6749848120">在 App Store 下載 Mish</a>
+          </div>
+      </div>
+  </section>
+
+  <Fragment slot="footer">
+    <footer class="site-footer">
+        <div class="container-shell">
+            <div class="footer-grid">
+                <div class="footer-group">
+                    <h2>Products</h2>
+                    <ul>
+                        <li><a href="/studioweb/mish/" aria-current="page">Mish 讀書筆記</a></li>
+                        <li><a href="/studioweb/packagetracker/">取貨吧 包裹追蹤</a></li>
+                        <li><a href="/studioweb/findtoilet/">找廁所 公廁地圖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Mish</h2>
+                    <ul>
+                        <li><a href="https://apps.apple.com/tw/app/id6749848120">App Store</a></li>
+                        <li><a href="/studioweb/privacy/mish/">Mish 隱私政策</a></li>
+                        <li><a href="/studioweb/contact/">支援與回報</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Studio</h2>
+                    <ul>
+                        <li><a href="/studioweb/about/">關於 Kenny Studio</a></li>
+                        <li><a href="/studioweb/guide/">Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Privacy</h2>
+                    <ul>
+                        <li><a href="/studioweb/privacy/">隱私政策總覽</a></li>
+                        <li><a href="/studioweb/privacy/website/">網站隱私說明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <span>&copy; 2026 Kenny Studio</span>
+                <span>臺灣臺北 · 一人工作室</span>
+            </div>
+        </div>
+    </footer>
+  </Fragment>
+</Base>

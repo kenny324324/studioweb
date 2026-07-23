@@ -1,0 +1,391 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="找廁所 FindToilets — 快速找到附近適合的公共廁所｜iOS App｜Kenny Studio" description="找廁所 App 用 GPS 幫你定位附近的公共廁所，查看評等、無障礙與親子設施。資料來自環境部公開資料與使用者評價，支援中英日韓。免費下載 iOS App。" theme="toilet" current="apps">
+  <Fragment slot="head">
+    <link rel="canonical" href="https://kenny324324.github.io/studioweb/findtoilet/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="找廁所 FindToilets — 快速找到附近適合的公共廁所">
+    <meta property="og:description" content="GPS 定位附近公廁，查看評等、無障礙與親子設施。全臺公廁資料，免費下載。">
+    <meta property="og:url" content="https://kenny324324.github.io/studioweb/findtoilet/">
+    <meta property="og:site_name" content="Kenny Studio">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:image" content="https://kenny324324.github.io/studioweb/assets/findtoilet/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="找廁所 FindToilets — 快速找到附近適合的公共廁所">
+    <meta name="twitter:description" content="GPS 定位附近公廁，查看評等、無障礙與親子設施。全臺公廁資料，免費下載。">
+    <meta name="twitter:image" content="https://kenny324324.github.io/studioweb/assets/findtoilet/og-image.png">
+
+    <link rel="alternate" hreflang="zh-Hant" href="https://kenny324324.github.io/studioweb/findtoilet/">
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FindToilets 找廁所｜附近廁所地圖工具",
+        "operatingSystem": "iOS",
+        "applicationCategory": "LifestyleApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" },
+        "downloadUrl": "https://apps.apple.com/tw/app/id6752564383",
+        "author": { "@type": "Organization", "name": "Kenny Studio" },
+        "description": "用 GPS 快速找到附近的公共廁所，查看評等、無障礙與親子設施資訊。"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "找廁所 App 是免費的嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "是。可以免費下載並使用完整的搜尋、地圖與評價功能；App 內會顯示少量廣告。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "App 裡的廁所資料從哪裡來？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "公廁資料來自環境部公開的全臺公廁資料集，App 會定期同步更新；營業時間等補充資訊來自公開地圖服務與使用者回報。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "可以查看無障礙或親子設施嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "可以。每個地點會顯示無障礙廁所、親子廁所與尿布台資訊，也可以只篩選有這些設施的地點。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "支援哪些語言？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "沒有網路時能用嗎？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "公廁資料內建並快取在裝置上，網路不穩時仍能瀏覽附近清單與地點資訊；地圖底圖與最新評價的載入需要網路。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "如何回報錯誤或最新狀況？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "在地點頁留下評價時可以一併回報現場狀況（例如缺衛生紙、維修中）；資料錯誤也歡迎寫信給開發者。"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script is:inline type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Kenny Studio", "item": "https://kenny324324.github.io/studioweb/" },
+            { "@type": "ListItem", "position": 2, "name": "FindToilets 找廁所｜附近廁所地圖工具", "item": "https://kenny324324.github.io/studioweb/findtoilet/" }
+        ]
+    }
+    </script>
+  </Fragment>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container-content hero-product-grid">
+                <div>
+                <div class="hero-product-head">
+                    <picture>
+                        <source srcset="/studioweb/assets/findtoilet/icon-160.avif?v=3" type="image/avif">
+                        <source srcset="/studioweb/assets/findtoilet/icon-160.webp?v=3" type="image/webp">
+                        <img class="app-icon" src="/studioweb/assets/findtoilet/icon-160.png?v=3" alt="找廁所 App icon" width="80" height="80" fetchpriority="high">
+                    </picture>
+                    <div>
+                        <p class="eyebrow">FindToilets 找廁所 · 公廁地圖</p>
+                    </div>
+                </div>
+                <h1>快速找到附近適合的公共廁所</h1>
+                <p class="lede">打開就定位，依距離列出附近公廁，還能看環境部評等、無障礙與親子設施。資料來自政府公開資料與使用者的真實評價，旅遊、通勤、帶小孩出門都派得上用場。</p>
+                <div class="hero-cta">
+                    <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6752564383">在 App Store 下載找廁所</a>
+                    <a class="action-link" href="/studioweb/findtoilet/map/">開啟網頁版地圖</a>
+                </div>
+                <p class="hero-note">免費下載 · iPhone · 支援中・英・日・韓</p>
+                </div>
+                <div class="hero-product-visual" aria-hidden="true" data-motion="spatial">
+                    <picture>
+                        <source srcset="/studioweb/assets/findtoilet/sc1-320.avif?v=2 320w, /studioweb/assets/findtoilet/sc1-640.avif?v=2 640w" sizes="320px" type="image/avif">
+                        <source srcset="/studioweb/assets/findtoilet/sc1-320.webp?v=2 320w, /studioweb/assets/findtoilet/sc1-640.webp?v=2 640w" sizes="320px" type="image/webp">
+                        <img src="/studioweb/assets/findtoilet/sc1-640.jpg?v=2" alt="" width="640" height="1385" loading="lazy" fetchpriority="high">
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots -->
+        <section class="section" aria-label="找廁所產品畫面">
+            <div class="container-content">
+                <div class="rail" data-motion="spatial">
+                    <div class="rail-track" tabindex="0" role="group" aria-label="找廁所 App 畫面，可左右捲動">
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/findtoilet/sc1-320.avif?v=2 320w, /studioweb/assets/findtoilet/sc1-640.avif?v=2 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/findtoilet/sc1-320.webp?v=2 320w, /studioweb/assets/findtoilet/sc1-640.webp?v=2 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/findtoilet/sc1-640.jpg?v=2" alt="找廁所地圖畫面：GPS 定位顯示附近公廁" width="640" height="1385" fetchpriority="high">
+                            </picture>
+                            <figcaption>附近公廁地圖</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/findtoilet/sc2-320.avif 320w, /studioweb/assets/findtoilet/sc2-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/findtoilet/sc2-320.webp 320w, /studioweb/assets/findtoilet/sc2-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/findtoilet/sc2-640.jpg" alt="找廁所地點詳細資訊：樓層與廁所類型" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>地點詳細資訊</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/findtoilet/sc3-320.avif 320w, /studioweb/assets/findtoilet/sc3-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/findtoilet/sc3-320.webp 320w, /studioweb/assets/findtoilet/sc3-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/findtoilet/sc3-640.jpg" alt="找廁所導航與無障礙設施資訊畫面" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>導航與設施</figcaption>
+                        </figure>
+                        <figure class="rail-slide">
+                            <picture>
+                                <source type="image/avif" srcset="/studioweb/assets/findtoilet/sc4-320.avif 320w, /studioweb/assets/findtoilet/sc4-640.avif 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <source type="image/webp" srcset="/studioweb/assets/findtoilet/sc4-320.webp 320w, /studioweb/assets/findtoilet/sc4-640.webp 640w" sizes="(min-width: 768px) 260px, 72vw">
+                                <img src="/studioweb/assets/findtoilet/sc4-640.jpg" alt="找廁所社群評價畫面：使用者真實評論" width="640" height="1385" loading="lazy">
+                            </picture>
+                            <figcaption>社群評價</figcaption>
+                        </figure>
+                    </div>
+                    <div class="rail-controls">
+                        <button class="rail-btn" type="button" data-rail-prev aria-label="上一張畫面">&#8592;</button>
+                        <button class="rail-btn" type="button" data-rail-next aria-label="下一張畫面">&#8594;</button>
+                        <span class="rail-status" data-rail-status aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section">
+            <div class="container-content">
+                <div class="section-head">
+                    <p class="eyebrow">核心功能</p>
+                    <h2>急的時候，不用碰運氣</h2>
+                </div>
+                <div class="feature-list">
+                    <div class="feature">
+                        <h3>打開就知道最近的在哪</h3>
+                        <p>GPS 定位後依距離排序附近公廁，附步行時間估計；一鍵接力 Apple 或 Google 地圖導航。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>評等與設施一眼看清</h3>
+                        <p>顯示環境部公廁評鑑等級，以及無障礙廁所、親子廁所、尿布台與樓層資訊。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>篩選你需要的</h3>
+                        <p>依場所類型（車站、百貨、公園⋯）、距離、評等與男廁／女廁／親子／無障礙篩選，還有 24 小時開放的推估標示。</p>
+                    </div>
+                    <div class="feature">
+                        <h3>真實評價與回報</h3>
+                        <p>使用者可以替地點評分、留下評語，並回報現場狀況（缺衛生紙、維修中⋯），幫助下一個有需要的人。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 資料來源 -->
+        <section class="section">
+            <div class="container-content">
+                <div class="section-head">
+                    <p class="eyebrow">資料來源</p>
+                    <h2>全臺公廁資料，持續更新</h2>
+                    <p>公廁資料來自環境部公開資料集，涵蓋全臺超過一萬個公廁地點（百貨、車站、公園、政府機關等），App 會定期同步最新資料，再加上使用者的現場回報。</p>
+                </div>
+                <div class="chip-group">
+                    <span class="chip">百貨公司</span>
+                    <span class="chip">捷運與車站</span>
+                    <span class="chip">公園與風景區</span>
+                    <span class="chip">觀光景點</span>
+                    <span class="chip">政府機關</span>
+                    <span class="chip">圖書館與文化中心</span>
+                    <span class="chip">醫療院所</span>
+                    <span class="chip">學校</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <div class="container-faq">
+                <div class="section-head">
+                    <p class="eyebrow">常見問題</p>
+                    <h2>FAQ</h2>
+                </div>
+                <div class="faq-list">
+                    <details>
+                        <summary>找廁所 App 是免費的嗎？</summary>
+                        <div>
+                            <p>是。可以免費下載並使用完整的搜尋、地圖與評價功能；App 內會顯示少量廣告。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>App 裡的廁所資料從哪裡來？</summary>
+                        <div>
+                            <p>公廁資料來自環境部公開的全臺公廁資料集，App 會定期同步更新；營業時間等補充資訊來自公開地圖服務與使用者回報。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>可以查看無障礙或親子設施嗎？</summary>
+                        <div>
+                            <p>可以。每個地點會顯示無障礙廁所、親子廁所與尿布台資訊，也可以只篩選有這些設施的地點。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>支援哪些語言？</summary>
+                        <div>
+                            <p>支援繁體中文、英文、日文、韓文四種語言，適合在台灣旅遊的外國旅客使用。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>沒有網路時能用嗎？</summary>
+                        <div>
+                            <p>公廁資料內建並快取在裝置上，網路不穩時仍能瀏覽附近清單與地點資訊；地圖底圖與最新評價的載入需要網路。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>如何回報錯誤或最新狀況？</summary>
+                        <div>
+                            <p>在地點頁留下評價時可以一併回報現場狀況（例如缺衛生紙、維修中）；資料錯誤也歡迎<a href="/studioweb/contact/">寫信給開發者</a>。</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web 資源（次要） -->
+        <section class="section">
+            <div class="container-content">
+                <div class="section-head">
+                    <p class="eyebrow">網頁資源</p>
+                    <h2>不方便下載 App 的時候</h2>
+                    <p>我們也提供免安裝的<a href="/studioweb/findtoilet/map/">網頁版公廁地圖</a>，在瀏覽器就能查看附近公廁；或依縣市瀏覽公廁清單。App 提供更完整的體驗：離線資料、設施篩選與社群評價。</p>
+                </div>
+                <h3 class="visually-hidden">依縣市瀏覽公廁</h3>
+                <div class="chip-group">
+                    <a href="/studioweb/findtoilet/area/taipei/" class="chip">台北公廁</a>
+                    <a href="/studioweb/findtoilet/area/newtaipei/" class="chip">新北公廁</a>
+                    <a href="/studioweb/findtoilet/area/taoyuan/" class="chip">桃園公廁</a>
+                    <a href="/studioweb/findtoilet/area/taichung/" class="chip">台中公廁</a>
+                    <a href="/studioweb/findtoilet/area/tainan/" class="chip">台南公廁</a>
+                    <a href="/studioweb/findtoilet/area/kaohsiung/" class="chip">高雄公廁</a>
+                    <a href="/studioweb/findtoilet/area/hualien/" class="chip">花蓮公廁</a>
+                    <a href="/studioweb/findtoilet/area/yilan/" class="chip">宜蘭公廁</a>
+                    <a href="/studioweb/findtoilet/area/" class="chip">更多地區 →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust -->
+        <section class="section" id="trust">
+            <div class="container-content">
+                <div class="section-head">
+                    <p class="eyebrow">信任與支援</p>
+                    <h2>隱私、支援與下載</h2>
+                </div>
+                <div class="trust-list">
+                    <div class="trust-item">
+                        <h3>隱私政策</h3>
+                        <p>找廁所的定位與評價資料處理方式，寫在專屬隱私政策。<br><a href="/studioweb/privacy/find-toilet/">查看找廁所隱私政策</a></p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>支援</h3>
+                        <p>資料錯誤回報與使用問題，來信必回。<br><a href="mailto:kenny4work324@gmail.com?subject=%5B%E6%89%BE%E5%BB%81%E6%89%80%5D%20%E4%BD%BF%E7%94%A8%E5%95%8F%E9%A1%8C">寫信給開發者</a></p>
+                    </div>
+                    <div class="trust-item">
+                        <h3>App Store</h3>
+                        <p>正式名稱：FindToilets 找廁所｜附近廁所地圖工具<br><a href="https://apps.apple.com/tw/app/id6752564383">前往 App Store 頁面</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section">
+            <div class="container-content">
+                <div class="final-cta">
+                    <h2>出門不再為找廁所煩惱</h2>
+                    <p>免費下載，支援 iPhone。</p>
+                    <a class="btn btn-primary" href="https://apps.apple.com/tw/app/id6752564383">在 App Store 下載找廁所</a>
+                </div>
+            </div>
+        </section>
+
+  <Fragment slot="footer">
+    <footer class="site-footer">
+        <div class="container-shell">
+            <div class="footer-grid">
+                <div class="footer-group">
+                    <h2>Products</h2>
+                    <ul>
+                        <li><a href="/studioweb/mish/">Mish 讀書筆記</a></li>
+                        <li><a href="/studioweb/packagetracker/">取貨吧 包裹追蹤</a></li>
+                        <li><a href="/studioweb/findtoilet/" aria-current="page">找廁所 公廁地圖</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>找廁所</h2>
+                    <ul>
+                        <li><a href="https://apps.apple.com/tw/app/id6752564383">App Store</a></li>
+                        <li><a href="/studioweb/findtoilet/map/">網頁版地圖</a></li>
+                        <li><a href="/studioweb/findtoilet/area/">地區公廁查詢</a></li>
+                        <li><a href="/studioweb/privacy/find-toilet/">找廁所隱私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Studio</h2>
+                    <ul>
+                        <li><a href="/studioweb/about/">關於 Kenny Studio</a></li>
+                        <li><a href="/studioweb/contact/">支援與回報</a></li>
+                        <li><a href="/studioweb/guide/">Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h2>Privacy</h2>
+                    <ul>
+                        <li><a href="/studioweb/privacy/">隱私政策總覽</a></li>
+                        <li><a href="/studioweb/privacy/website/">網站隱私說明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <span>&copy; 2026 Kenny Studio</span>
+                <span>臺灣臺北 · 一人工作室</span>
+            </div>
+        </div>
+    </footer>
+  </Fragment>
+</Base>
