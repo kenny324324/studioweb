@@ -373,8 +373,8 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 /* ---------- Hero ---------- */
-.hero { padding-block: var(--space-16) var(--space-12); }
-@media (min-width: 1024px) { .hero { padding-block: var(--space-24) var(--space-16); } }
+.hero { padding-block: var(--space-12) var(--space-8); }
+@media (min-width: 1024px) { .hero { padding-block: var(--space-20) var(--space-12); } }
 .hero .eyebrow { margin-bottom: var(--space-4); }
 .hero h1 {
   font-size: var(--text-display-lg);
@@ -492,9 +492,9 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 /* ---------- Section ---------- */
-.section { padding-block: var(--space-16); }
-@media (min-width: 768px)  { .section { padding-block: var(--space-20); } }
-@media (min-width: 1024px) { .section { padding-block: var(--space-24); } }
+.section { padding-block: var(--space-12); }
+@media (min-width: 768px)  { .section { padding-block: var(--space-16); } }
+@media (min-width: 1024px) { .section { padding-block: var(--space-20); } }
 .section-head { margin-bottom: var(--space-8); }
 .section-head .eyebrow { margin-bottom: var(--space-2); }
 .section-head h2 { font-size: var(--text-h2); letter-spacing: -0.012em; max-width: 28ch; }
@@ -722,11 +722,15 @@ a.chip { transition: border-color var(--duration-control) var(--ease-out-strong)
 /* ---------- Prose（About / Privacy / Guide 長文） ---------- */
 .prose { max-width: 42rem; }
 .prose h1 { font-size: var(--text-h1); letter-spacing: -0.018em; line-height: 1.15; }
-.prose h2 { font-size: var(--text-h2); letter-spacing: -0.012em; margin-top: var(--space-12); margin-bottom: var(--space-4); }
-.prose h3 { font-size: var(--text-h3); margin-top: var(--space-8); margin-bottom: var(--space-3); }
-.prose p, .prose ul, .prose ol { margin-bottom: var(--space-4); color: var(--text-secondary); }
+.prose h2 { font-size: var(--text-h2); letter-spacing: -0.012em; margin-top: var(--space-16); margin-bottom: var(--space-4); }
+.prose h3 { font-size: var(--text-h3); margin-top: var(--space-12); margin-bottom: var(--space-3); }
+.prose p, .prose ul, .prose ol {
+  margin-bottom: var(--space-6);
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
 .prose ul, .prose ol { padding-left: 1.5rem; }
-.prose li { margin-bottom: var(--space-2); }
+.prose li { margin-bottom: var(--space-3); }
 .prose li::marker { color: var(--text-tertiary); }
 .prose a { overflow-wrap: anywhere; }
 .prose hr { border: 0; border-top: 1px solid var(--divider); margin-block: var(--space-12); }
