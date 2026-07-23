@@ -115,6 +115,7 @@ html {
   font-synthesis: none;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 88px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -224,6 +225,7 @@ a:hover { text-decoration-thickness: 2px; }
   column-gap: var(--space-2);
 }
 .site-nav a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -234,10 +236,19 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--text-secondary);
   text-decoration: none;
   border-radius: var(--radius-chip);
-  transition: color var(--duration-control) var(--ease-out-strong),
-              background-color var(--duration-control) var(--ease-out-strong);
+  transition: color var(--duration-control) var(--ease-out-strong);
 }
-.site-nav a[aria-current="page"] {
+/* hover 底色用內縮的偽元素呈現：視覺較扁，但點擊範圍仍是 44px */
+.site-nav a::before {
+  content: "";
+  position: absolute;
+  inset: 8px 0;
+  border-radius: var(--radius-chip);
+  z-index: -1;
+  transition: background-color var(--duration-control) var(--ease-out-strong);
+}
+.site-nav a[aria-current="page"],
+.site-nav a[aria-current="true"] {
   color: var(--text-primary);
   font-weight: 600;
   text-decoration: underline;
@@ -245,7 +256,8 @@ a:hover { text-decoration-thickness: 2px; }
   text-decoration-thickness: 2px;
 }
 @media (hover: hover) and (pointer: fine) {
-  .site-nav a:hover { color: var(--text-primary); background: var(--surface-subtle); }
+  .site-nav a:hover { color: var(--text-primary); }
+  .site-nav a:hover::before { background: var(--surface-subtle); }
 }
 
 @media (min-width: 768px) {
