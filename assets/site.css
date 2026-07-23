@@ -802,20 +802,6 @@ a.chip { transition: border-color var(--duration-control) var(--ease-out-strong)
   [data-reveal].is-revealed { opacity: 1; transform: none; }
 }
 
-/* ---------- 卡片微互動（僅 fine pointer） ---------- */
-.product-card, .feature, .trust-item {
-  transition: transform var(--duration-control) var(--ease-out-strong),
-              box-shadow var(--duration-control) var(--ease-out-strong),
-              border-color var(--duration-control) var(--ease-out-strong);
-}
-@media (hover: hover) and (pointer: fine) {
-  .product-card:hover, .feature:hover, .trust-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-    border-color: color-mix(in srgb, var(--border-strong) 45%, var(--divider));
-  }
-}
-
 /* ---------- App icon 跨頁接力（cross-document shared element） ---------- */
 .vt-app-mish   { view-transition-name: app-icon-mish; }
 .vt-app-pickup { view-transition-name: app-icon-pickup; }
