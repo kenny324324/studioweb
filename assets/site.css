@@ -411,6 +411,50 @@ a:hover { text-decoration-thickness: 2px; }
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
 }
 
+/* 首頁 hero 圖文並排（桌機） */
+.hero-grid { display: grid; gap: var(--space-8); }
+.hero-visual { display: none; }
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    align-items: center;
+    gap: var(--space-12);
+  }
+  .hero-visual {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+  .hero-visual picture:nth-child(2) { transform: translateY(28px); }
+  .hero-visual img {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--divider);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+    background: var(--surface-subtle);
+  }
+}
+
+/* 產品頁 hero 圖文並排（桌機） */
+.hero-product-grid { display: grid; gap: var(--space-8); }
+.hero-product-visual { display: none; }
+@media (min-width: 1024px) {
+  .hero-product-grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: center;
+    gap: var(--space-12);
+  }
+  .hero-product-visual { display: block; justify-self: center; }
+  .hero-product-visual img {
+    width: min(320px, 100%);
+    height: auto;
+    border-radius: var(--radius-hero-visual);
+    border: 1px solid var(--divider);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+    background: var(--surface-subtle);
+  }
+}
+
 /* 首頁 hero 產品證據列 */
 .hero-icons {
   list-style: none;
