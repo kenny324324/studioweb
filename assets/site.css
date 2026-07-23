@@ -721,7 +721,12 @@ a.chip { transition: border-color var(--duration-control) var(--ease-out-strong)
 
 /* ---------- Prose（About / Privacy / Guide 長文） ---------- */
 .prose { max-width: 42rem; }
-.prose h1 { font-size: var(--text-h1); letter-spacing: -0.018em; line-height: 1.15; }
+.prose h1 {
+  font-size: var(--text-h1);
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  margin-bottom: var(--space-6);
+}
 .prose h2 { font-size: var(--text-h2); letter-spacing: -0.012em; margin-top: var(--space-16); margin-bottom: var(--space-4); }
 .prose h3 { font-size: var(--text-h3); margin-top: var(--space-12); margin-bottom: var(--space-3); }
 .prose p, .prose ul, .prose ol {
